@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="1092" viewBox="0 0 960 1092" role="img" aria-labelledby="svg-title svg-desc">
+  <title id="svg-title">World Select — featured projects</title>
+  <desc id="svg-desc">Four vertically stacked project worlds covering gameplay systems, generative AI tooling, interactive web, and gamified learning.</desc>
+  <defs>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#7B2FF7" stroke-opacity="0.10" stroke-width="1"/>
+    </pattern>
+    <pattern id="scanlines" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="1" fill="#FFFFFF" opacity="0.025"/>
+    </pattern>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <style>
+      .display { font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-weight: 800; letter-spacing: 2px; }
+      .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+      .label { fill: #C9D1D9; font-size: 15px; letter-spacing: 1.4px; }
+      .value { fill: #FFFFFF; font-size: 22px; font-weight: 700; }
+      .muted { fill: #C9D1D9; font-size: 14px; }
+    </style>
+  </defs>
+  <rect width="960" height="1092" rx="20" fill="#0D0221"/>
+  <rect x="1.5" y="1.5" width="957" height="1089" rx="18.5" fill="none" stroke="#FFB800" stroke-width="3"/>
+  <rect x="12" y="12" width="936" height="1068" rx="12" fill="url(#grid)"/>
+  <rect width="960" height="1092" rx="20" fill="url(#scanlines)"/>
+  
+  <text x="48" y="65" class="display" fill="#FFB800" font-size="31">WORLD SELECT // FEATURED BUILDS</text>
+  <text x="912" y="64" text-anchor="end" class="mono" fill="#C9D1D9" font-size="13">CHOOSE A WORLD // SOURCE BELOW</text>
+  <rect x="38" y="100" width="884" height="220" rx="12" fill="#14072D" stroke="#FF2E97" stroke-width="2"/><rect x="38" y="100" width="14" height="220" rx="7" fill="#FF2E97"/><text x="74" y="144" class="mono" fill="#FF2E97" font-size="15" font-weight="700">WORLD 01 // GAMEPLAY SYSTEMS</text><text x="74" y="182" class="display" fill="#FFFFFF" font-size="28">ARENA SURVIVOR</text><text x="74" y="212" class="mono" fill="#FFB800" font-size="14">Survive the loop. Read the arena. Build the run.</text><text x="74" y="243" class="mono" fill="#C9D1D9" font-size="14">A Unity survival arena built around enemy waves, automatic weapons, XP progression,</text><text x="74" y="265" class="mono" fill="#C9D1D9" font-size="14">level-ups, shaders, and a browser-playable WebGL build.</text><text x="74" y="298" class="mono" fill="#FFFFFF" font-size="13">ROLE  CREATOR / GAMEPLAY ENGINEER</text><text x="475" y="298" class="mono" fill="#C9D1D9" font-size="13">LOADOUT  C# / SHADERLAB / WEBGL</text><text x="895" y="144" text-anchor="end" class="mono" fill="#39FF14" font-size="13">PLAYABLE BUILD LIVE</text><rect x="38" y="344" width="884" height="220" rx="12" fill="#14072D" stroke="#00F0FF" stroke-width="2"/><rect x="38" y="344" width="14" height="220" rx="7" fill="#00F0FF"/><text x="74" y="388" class="mono" fill="#00F0FF" font-size="15" font-weight="700">WORLD 02 // GENERATIVE AI TOOLING</text><text x="74" y="426" class="display" fill="#FFFFFF" font-size="28">AI GAME ASSET MAKER</text><text x="74" y="456" class="mono" fill="#FFB800" font-size="14">Prompt to generated asset to playable game loop.</text><text x="74" y="487" class="mono" fill="#C9D1D9" font-size="14">A modular pipeline that joins Stable Diffusion asset generation, a FastAPI/Celery</text><text x="74" y="509" class="mono" fill="#C9D1D9" font-size="14">backend, an Electron interface, and automatic Pygame assembly.</text><text x="74" y="542" class="mono" fill="#FFFFFF" font-size="13">ROLE  CREATOR / AI SYSTEMS ENGINEER</text><text x="475" y="542" class="mono" fill="#C9D1D9" font-size="13">LOADOUT  PYTHON / FASTAPI / REACT / ELECTRON</text><text x="895" y="388" text-anchor="end" class="mono" fill="#39FF14" font-size="13">SOURCE AVAILABLE</text><rect x="38" y="588" width="884" height="220" rx="12" fill="#14072D" stroke="#7B2FF7" stroke-width="2"/><rect x="38" y="588" width="14" height="220" rx="7" fill="#7B2FF7"/><text x="74" y="632" class="mono" fill="#7B2FF7" font-size="15" font-weight="700">WORLD 03 // INTERACTIVE WEB</text><text x="74" y="670" class="display" fill="#FFFFFF" font-size="28">TYPEMAKER</text><text x="74" y="700" class="mono" fill="#FFB800" font-size="14">Competitive typing with live feedback and generated prompts.</text><text x="74" y="731" class="mono" fill="#C9D1D9" font-size="14">A fast typing arena with casual and competition modes, real-time WPM analytics, result</text><text x="74" y="753" class="mono" fill="#C9D1D9" font-size="14">charts, themes, and Gemini-powered prompt generation.</text><text x="74" y="786" class="mono" fill="#FFFFFF" font-size="13">ROLE  CREATOR / FRONTEND ENGINEER</text><text x="475" y="786" class="mono" fill="#C9D1D9" font-size="13">LOADOUT  TYPESCRIPT / VITE / RECHARTS / GEMINI</text><text x="895" y="632" text-anchor="end" class="mono" fill="#39FF14" font-size="13">LIVE WEB BUILD</text><rect x="38" y="832" width="884" height="220" rx="12" fill="#14072D" stroke="#39FF14" stroke-width="2"/><rect x="38" y="832" width="14" height="220" rx="7" fill="#39FF14"/><text x="74" y="876" class="mono" fill="#39FF14" font-size="15" font-weight="700">WORLD 04 // GAMIFIED LEARNING</text><text x="74" y="914" class="display" fill="#FFFFFF" font-size="28">MEDLINGO</text><text x="74" y="944" class="mono" fill="#FFB800" font-size="14">Medical revision re-engineered as a game loop.</text><text x="74" y="975" class="mono" fill="#C9D1D9" font-size="14">A full-stack learning system that combines a gamified React path, spaced-repetition</text><text x="74" y="997" class="mono" fill="#C9D1D9" font-size="14">state, Supabase retrieval, and Python data pipelines.</text><text x="74" y="1030" class="mono" fill="#FFFFFF" font-size="13">ROLE  ARCHITECT / FULL-STACK ENGINEER</text><text x="475" y="1030" class="mono" fill="#C9D1D9" font-size="13">LOADOUT  JAVASCRIPT / PYTHON / SUPABASE / ZUSTAND</text><text x="895" y="876" text-anchor="end" class="mono" fill="#39FF14" font-size="13">LIVE WEB BUILD</text>
+
+</svg>

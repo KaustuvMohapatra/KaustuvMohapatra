@@ -1,0 +1,98 @@
+player:
+  name: Kaustuv Mohapatra
+  handle: zeusmonsterx
+  class: Game Developer + AI Engineer
+  build: Interactive Systems
+  status: ONLINE
+  motto: Make it feel like a game. Make it unforgettable.
+  focus:
+    - Gameplay Systems
+    - Generative AI
+    - Multiplayer
+    - Interactive Web
+
+mission_log:
+  - I build interactive worlds where game development and AI meet.
+  - Mechanics, feedback, and responsiveness are part of the engineering.
+  - I like systems that feel alive, from gameplay loops to AI-enhanced tools.
+  - The rule behind every build is simple: game feel matters.
+
+current_quests:
+  - Multiplayer game systems and real-time state
+  - Generative AI pipelines for games
+  - Interactive simulations and playable web experiences
+
+side_quests:
+  - Procedural art and Blender experiments
+  - ML and data-engineering deep dives
+  - Small arcade builds that sharpen game feel
+
+dev_dna:
+  - label: Gameplay Systems
+    value: 92
+  - label: AI / Generative AI
+    value: 94
+  - label: Interactive Web
+    value: 88
+  - label: Tools / Pipelines
+    value: 84
+  - label: Full Stack
+    value: 82
+  - label: Multiplayer
+    value: 68
+
+tech_tree:
+  Game Systems:
+    - Unity
+    - C#
+    - ShaderLab
+    - Phaser
+    - Three.js
+    - Gameplay Architecture
+  AI / ML:
+    - Python
+    - PyTorch
+    - TensorFlow
+    - OpenCV
+    - Generative AI
+    - Data Pipelines
+  Systems / Backend:
+    - FastAPI
+    - Flask
+    - Node.js
+    - REST
+    - SQL
+    - Docker
+  Frontend / Interactive Web:
+    - React
+    - TypeScript
+    - JavaScript
+    - Vite
+    - Three.js
+  Creative Toolkit:
+    - Blender
+    - Figma
+    - Git
+    - GitHub
+
+achievements:
+  - label: PLAYABLE BUILD LIVE
+    detail: Arena Survivor is playable in the browser on itch.io.
+    url: https://kaustuvm.itch.io/arena-survivor
+  - label: AI PIPELINE ONLINE
+    detail: AI Game Asset Maker connects generated assets to a playable Pygame loop.
+    url: https://github.com/KaustuvMohapatra/AI-Game-Asset-Maker
+  - label: INTERACTIVE SYSTEM SHIPPED
+    detail: TypeMaker has a public competitive typing build.
+    url: https://typemaker-pro.vercel.app/
+  - label: OPEN-SOURCE GAME SYSTEM
+    detail: Arena Survivor publishes its Unity gameplay project and WebGL build.
+    url: https://github.com/KaustuvMohapatra/Arena-Survivor
+
+links:
+  github: https://github.com/KaustuvMohapatra
+  portfolio: https://kaustuvmohapatra.github.io/ResumeSite/
+  games: https://kaustuvm.itch.io/
+  linkedin: https://www.linkedin.com/in/kaustuv-mohapatra-b0538428b/
+  email: mailto:kaustuv4@outlook.com
+

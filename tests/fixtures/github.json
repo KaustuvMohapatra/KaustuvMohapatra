@@ -1,0 +1,30 @@
+{
+  "username": "KaustuvMohapatra",
+  "public_repositories": 31,
+  "commits_30d": 12,
+  "active_repositories_180d": 6,
+  "releases": 2,
+  "stars_received": 4,
+  "top_language": "Python",
+  "generated_at": "2026-08-23T12:00:00+00:00",
+  "ship_log": [
+    {
+      "date": "2026-08-21",
+      "kind": "PUSH",
+      "repository": "Arena-Survivor",
+      "summary": "Pushed 3 commits to Arena-Survivor"
+    },
+    {
+      "date": "2026-08-18",
+      "kind": "RELEASE",
+      "repository": "typemaker",
+      "summary": "Published v1.2.0 in typemaker"
+    },
+    {
+      "date": "2026-08-14",
+      "kind": "MERGE",
+      "repository": "AI-Game-Asset-Maker",
+      "summary": "Merged PR #8 in AI-Game-Asset-Maker"
+    }
+  ]
+}
