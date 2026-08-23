@@ -24,7 +24,6 @@
   <rect x="1.5" y="1.5" width="957" height="542" rx="18.5" fill="none" stroke="#00F0FF" stroke-width="3"/>
   <rect x="12" y="12" width="936" height="521" rx="12" fill="url(#grid)"/>
   <rect width="960" height="545" rx="20" fill="url(#scanlines)"/>
-
   <text x="62" y="74" class="display" fill="#00F0FF" font-size="30">PLAYER SAVE // SLOT 01</text>
   <text x="898" y="72" text-anchor="end" class="mono" fill="#39FF14" font-size="15">SAVE DATA VERIFIED</text>
   <line x1="62" y1="94" x2="898" y2="94" stroke="#7B2FF7" stroke-width="2"/>
@@ -32,12 +31,11 @@
   <text x="62" y="181" class="mono" fill="#C9D1D9" font-size="17">CLASS  GAME DEVELOPER + AI ENGINEER</text>
   <text x="898" y="143" text-anchor="end" class="display" fill="#FFB800" font-size="31">LVL 04</text>
   <text x="898" y="181" text-anchor="end" class="mono" fill="#39FF14" font-size="17">STATUS  ONLINE</text>
-  <text x="62" y="246" class="label mono">PUBLIC SOURCE REPOS</text><text x="422" y="246" text-anchor="end" class="value mono">30</text><text x="500" y="246" class="label mono">PUBLIC COMMITS / 30D</text><text x="860" y="246" text-anchor="end" class="value mono">0</text><text x="62" y="313" class="label mono">ACTIVE WORLDS / 180D</text><text x="422" y="313" text-anchor="end" class="value mono">6</text><text x="500" y="313" class="label mono">RELEASES PUBLISHED</text><text x="860" y="313" text-anchor="end" class="value mono">0</text><text x="62" y="380" class="label mono">TOP SIGNAL</text><text x="422" y="380" text-anchor="end" class="value mono">PYTHON</text><text x="500" y="380" class="label mono">STARS RECEIVED</text><text x="860" y="380" text-anchor="end" class="value mono">3</text>
+  <text x="62" y="246" class="label mono">PUBLIC SOURCE REPOS</text><text x="422" y="246" text-anchor="end" class="value mono">30</text><text x="500" y="246" class="label mono">PUBLIC COMMITS / 30D</text><text x="860" y="246" text-anchor="end" class="value mono">5</text><text x="62" y="313" class="label mono">ACTIVE WORLDS / 180D</text><text x="422" y="313" text-anchor="end" class="value mono">6</text><text x="500" y="313" class="label mono">RELEASES PUBLISHED</text><text x="860" y="313" text-anchor="end" class="value mono">0</text><text x="62" y="380" class="label mono">TOP SIGNAL</text><text x="422" y="380" text-anchor="end" class="value mono">PYTHON</text><text x="500" y="380" class="label mono">STARS RECEIVED</text><text x="860" y="380" text-anchor="end" class="value mono">3</text>
   <text x="62" y="456" class="label mono">PLAYER XP // PLAYFUL PROFILE METRIC</text>
-  <text x="898" y="456" text-anchor="end" class="value mono">3,060 XP</text>
+  <text x="898" y="456" text-anchor="end" class="value mono">3,085 XP</text>
   <rect x="62" y="474" width="520" height="15" rx="7.5" fill="#241344" stroke="#7B2FF7"/>
-  <rect x="62" y="474" width="31" height="15" rx="7.5" fill="#FF2E97"/>
-  <text x="322" y="518" text-anchor="middle" class="mono" fill="#C9D1D9" font-size="12">60 / 1000 TO NEXT LEVEL</text>
+  <rect x="62" y="474" width="44" height="15" rx="7.5" fill="#FF2E97"/>
+  <text x="322" y="518" text-anchor="middle" class="mono" fill="#C9D1D9" font-size="12">85 / 1000 TO NEXT LEVEL</text>
   <text x="898" y="487" text-anchor="end" class="mono" fill="#C9D1D9" font-size="13">LAST SAVE  23 AUG 2026</text>
-
 </svg>

@@ -24,7 +24,6 @@
   <rect x="1.5" y="1.5" width="957" height="377" rx="18.5" fill="none" stroke="#7B2FF7" stroke-width="3"/>
   <rect x="12" y="12" width="936" height="356" rx="12" fill="url(#grid)"/>
   <rect width="960" height="380" rx="20" fill="url(#scanlines)"/>
-
   <path d="M32 48 H250" stroke="#00F0FF" stroke-width="3" filter="url(#glow)"/>
   <text x="62" y="78" class="mono" fill="#00F0FF" font-size="17" font-weight="700">INSERT COIN // PLAYER PROFILE OS</text>
   <text x="58" y="157" class="display" fill="#FFFFFF" font-size="53">KAUSTUV MOHAPATRA</text>
@@ -34,5 +33,4 @@
   <text x="898" y="78" text-anchor="end" class="mono" fill="#39FF14" font-size="14">STATUS: ONLINE</text>
   <circle cx="916" cy="73" r="5" fill="#39FF14" filter="url(#glow)"/>
   <text x="898" y="331" text-anchor="end" class="mono" fill="#7B2FF7" font-size="12">FOCUS: GAMEPLAY SYSTEMS / GENERATIVE AI / MULTIPLAYER</text>
-
 </svg>
