@@ -1,0 +1,71 @@
+projects:
+  - id: arena-survivor
+    name: Arena Survivor
+    tagline: Survive the loop. Read the arena. Build the run.
+    description: A Unity survival arena built around enemy waves, automatic weapons, XP progression, level-ups, shaders, and a browser-playable WebGL build.
+    role: Creator / Gameplay Engineer
+    status: Playable Build Live
+    category: Gameplay Systems
+    engine: Unity
+    stack:
+      - C#
+      - ShaderLab
+      - WebGL
+    github: https://github.com/KaustuvMohapatra/Arena-Survivor
+    demo: https://kaustuvm.itch.io/arena-survivor
+    image: null
+    featured: true
+
+  - id: ai-game-asset-maker
+    name: AI Game Asset Maker
+    tagline: Prompt to generated asset to playable game loop.
+    description: A modular pipeline that joins Stable Diffusion asset generation, a FastAPI/Celery backend, an Electron interface, and automatic Pygame assembly.
+    role: Creator / AI Systems Engineer
+    status: Source Available
+    category: Generative AI Tooling
+    engine: Pygame
+    stack:
+      - Python
+      - FastAPI
+      - React
+      - Electron
+    github: https://github.com/KaustuvMohapatra/AI-Game-Asset-Maker
+    demo: null
+    image: null
+    featured: true
+
+  - id: typemaker
+    name: TypeMaker
+    tagline: Competitive typing with live feedback and generated prompts.
+    description: A fast typing arena with casual and competition modes, real-time WPM analytics, result charts, themes, and Gemini-powered prompt generation.
+    role: Creator / Frontend Engineer
+    status: Live Web Build
+    category: Interactive Web
+    engine: React
+    stack:
+      - TypeScript
+      - Vite
+      - Recharts
+      - Gemini
+    github: https://github.com/KaustuvMohapatra/typemaker
+    demo: https://typemaker-pro.vercel.app/
+    image: null
+    featured: true
+
+  - id: medlingo
+    name: MedLingo
+    tagline: Medical revision re-engineered as a game loop.
+    description: A full-stack learning system that combines a gamified React path, spaced-repetition state, Supabase retrieval, and Python data pipelines.
+    role: Architect / Full-stack Engineer
+    status: Live Web Build
+    category: Gamified Learning
+    engine: React
+    stack:
+      - JavaScript
+      - Python
+      - Supabase
+      - Zustand
+    github: https://github.com/KaustuvMohapatra/MedLingo
+    demo: https://medlingo-pied.vercel.app/
+    image: null
+    featured: true

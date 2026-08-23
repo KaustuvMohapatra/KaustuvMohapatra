@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="380" viewBox="0 0 960 380" role="img" aria-labelledby="svg-title svg-desc">
+  <title id="svg-title">Kaustuv Mohapatra — Player 1 Ready</title>
+  <desc id="svg-desc">Arcade-style title screen identifying Kaustuv as a game developer, AI engineer, and interactive systems developer.</desc>
+  <defs>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#7B2FF7" stroke-opacity="0.10" stroke-width="1"/>
+    </pattern>
+    <pattern id="scanlines" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="1" fill="#FFFFFF" opacity="0.025"/>
+    </pattern>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <style>
+      .display { font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-weight: 800; letter-spacing: 2px; }
+      .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+      .label { fill: #C9D1D9; font-size: 15px; letter-spacing: 1.4px; }
+      .value { fill: #FFFFFF; font-size: 22px; font-weight: 700; }
+      .muted { fill: #C9D1D9; font-size: 14px; }
+    </style>
+  </defs>
+  <rect width="960" height="380" rx="20" fill="#0D0221"/>
+  <rect x="1.5" y="1.5" width="957" height="377" rx="18.5" fill="none" stroke="#7B2FF7" stroke-width="3"/>
+  <rect x="12" y="12" width="936" height="356" rx="12" fill="url(#grid)"/>
+  <rect width="960" height="380" rx="20" fill="url(#scanlines)"/>
+
+  <path d="M32 48 H250" stroke="#00F0FF" stroke-width="3" filter="url(#glow)"/>
+  <text x="62" y="78" class="mono" fill="#00F0FF" font-size="17" font-weight="700">INSERT COIN // PLAYER PROFILE OS</text>
+  <text x="58" y="157" class="display" fill="#FFFFFF" font-size="53">KAUSTUV MOHAPATRA</text>
+  <text x="62" y="207" class="mono" fill="#FF2E97" font-size="22" font-weight="700">PLAYER 1 READY // zeusmonsterx</text>
+  <text x="62" y="270" class="mono" fill="#FFFFFF" font-size="18" font-weight="700">GAME DEVELOPER</text><line x1="312" y1="244" x2="312" y2="282" stroke="#7B2FF7" stroke-width="2"/><text x="348" y="270" class="mono" fill="#FFFFFF" font-size="18" font-weight="700">AI / ML ENGINEER</text><line x1="598" y1="244" x2="598" y2="282" stroke="#7B2FF7" stroke-width="2"/><text x="634" y="270" class="mono" fill="#FFFFFF" font-size="18" font-weight="700">INTERACTIVE SYSTEMS</text>
+  <text x="62" y="331" class="mono" fill="#C9D1D9" font-size="16">“Make it feel like a game. Make it unforgettable.”</text>
+  <text x="898" y="78" text-anchor="end" class="mono" fill="#39FF14" font-size="14">STATUS: ONLINE</text>
+  <circle cx="916" cy="73" r="5" fill="#39FF14" filter="url(#glow)"/>
+  <text x="898" y="331" text-anchor="end" class="mono" fill="#7B2FF7" font-size="12">FOCUS: GAMEPLAY SYSTEMS / GENERATIVE AI / MULTIPLAYER</text>
+
+</svg>
