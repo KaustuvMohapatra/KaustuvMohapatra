@@ -45,4 +45,3 @@ jobs:
 
       - name: Validate config, SVG XML, README assets, and workflows
         run: python scripts/validate_profile.py --generated-dir .profile-ci/generated
-

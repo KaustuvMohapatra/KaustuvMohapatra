@@ -24,7 +24,7 @@
   <rect x="1.5" y="1.5" width="957" height="542" rx="18.5" fill="none" stroke="#00F0FF" stroke-width="3"/>
   <rect x="12" y="12" width="936" height="521" rx="12" fill="url(#grid)"/>
   <rect width="960" height="545" rx="20" fill="url(#scanlines)"/>
-  
+
   <text x="62" y="74" class="display" fill="#00F0FF" font-size="30">PLAYER SAVE // SLOT 01</text>
   <text x="898" y="72" text-anchor="end" class="mono" fill="#39FF14" font-size="15">SAVE DATA VERIFIED</text>
   <line x1="62" y1="94" x2="898" y2="94" stroke="#7B2FF7" stroke-width="2"/>

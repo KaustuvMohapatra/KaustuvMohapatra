@@ -24,7 +24,7 @@
   <rect x="1.5" y="1.5" width="957" height="495" rx="18.5" fill="none" stroke="#FF2E97" stroke-width="3"/>
   <rect x="12" y="12" width="936" height="474" rx="12" fill="url(#grid)"/>
   <rect width="960" height="498" rx="20" fill="url(#scanlines)"/>
-  
+
   <text x="62" y="70" class="display" fill="#FF2E97" font-size="30">DEV DNA // CURRENT BUILD</text>
   <text x="898" y="68" text-anchor="end" class="mono" fill="#C9D1D9" font-size="13">POSITIONING MAP // EDITABLE CONFIG</text>
   <line x1="62" y1="91" x2="898" y2="91" stroke="#7B2FF7" stroke-width="2"/>

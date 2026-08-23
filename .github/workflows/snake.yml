@@ -44,4 +44,3 @@ jobs:
           git commit -m "chore(profile): update contribution snake"
           git pull --rebase origin main
           git push origin HEAD:main
-

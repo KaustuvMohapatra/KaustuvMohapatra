@@ -73,6 +73,7 @@ def _svg_shell(
     height: int,
     accent: str,
 ) -> str:
+    body = body.strip()
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="svg-title svg-desc">
   <title id="svg-title">{_escape(title)}</title>
   <desc id="svg-desc">{_escape(description)}</desc>

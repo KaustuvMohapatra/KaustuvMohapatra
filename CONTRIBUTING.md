@@ -63,4 +63,3 @@ git diff --check
 ```
 
 For a live refresh, omit `--fixture`. If GitHub cannot be reached, generation exits without replacing the last known-good SVGs.
-
