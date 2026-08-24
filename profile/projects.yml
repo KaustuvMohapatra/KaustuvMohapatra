@@ -13,6 +13,10 @@ projects:
       - WebGL
     github: https://github.com/KaustuvMohapatra/Arena-Survivor
     demo: https://kaustuvm.itch.io/arena-survivor
+    published:
+      type: itch
+      url: https://kaustuvm.itch.io/arena-survivor
+    lifecycle: active-development
     image: null
     featured: true
 
@@ -31,6 +35,10 @@ projects:
       - Electron
     github: https://github.com/KaustuvMohapatra/AI-Game-Asset-Maker
     demo: null
+    published:
+      type: none
+      url: null
+    lifecycle: active-development
     image: null
     featured: true
 
@@ -49,6 +57,10 @@ projects:
       - Gemini
     github: https://github.com/KaustuvMohapatra/typemaker
     demo: https://typemaker-pro.vercel.app/
+    published:
+      type: web
+      url: https://typemaker-pro.vercel.app/
+    lifecycle: active-development
     image: null
     featured: true
 
@@ -67,5 +79,9 @@ projects:
       - Zustand
     github: https://github.com/KaustuvMohapatra/MedLingo
     demo: https://medlingo-pied.vercel.app/
+    published:
+      type: web
+      url: https://medlingo-pied.vercel.app/
+    lifecycle: active-development
     image: null
     featured: true

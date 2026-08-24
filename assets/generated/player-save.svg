@@ -18,6 +18,15 @@
       .label { fill: #C9D1D9; font-size: 15px; letter-spacing: 1.4px; }
       .value { fill: #FFFFFF; font-size: 22px; font-weight: 700; }
       .muted { fill: #C9D1D9; font-size: 14px; }
+      .pulse-dot { animation: hudPulse 2.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+      .radar-sweep { animation: radarSweep 5s linear infinite; }
+      .cursor { animation: cursorBlink 1.15s steps(1, end) infinite; }
+      @keyframes hudPulse { 0%, 100% { opacity: .45; transform: scale(.82); } 50% { opacity: 1; transform: scale(1); } }
+      @keyframes radarSweep { 0% { transform: translateX(-720px); opacity: 0; } 12%, 88% { opacity: .65; } 100% { transform: translateX(720px); opacity: 0; } }
+      @keyframes cursorBlink { 0%, 48% { opacity: 1; } 49%, 100% { opacity: 0; } }
+      @media (prefers-reduced-motion: reduce) {
+        .pulse-dot, .radar-sweep, .cursor { animation: none !important; }
+      }
     </style>
   </defs>
   <rect width="960" height="545" rx="20" fill="#0D0221"/>
@@ -29,13 +38,13 @@
   <line x1="62" y1="94" x2="898" y2="94" stroke="#7B2FF7" stroke-width="2"/>
   <text x="62" y="143" class="display" fill="#FFFFFF" font-size="31">KAUSTUV MOHAPATRA</text>
   <text x="62" y="181" class="mono" fill="#C9D1D9" font-size="17">CLASS  GAME DEVELOPER + AI ENGINEER</text>
-  <text x="898" y="143" text-anchor="end" class="display" fill="#FFB800" font-size="31">LVL 04</text>
-  <text x="898" y="181" text-anchor="end" class="mono" fill="#39FF14" font-size="17">STATUS  ONLINE</text>
-  <text x="62" y="246" class="label mono">PUBLIC SOURCE REPOS</text><text x="422" y="246" text-anchor="end" class="value mono">30</text><text x="500" y="246" class="label mono">PUBLIC COMMITS / 30D</text><text x="860" y="246" text-anchor="end" class="value mono">5</text><text x="62" y="313" class="label mono">ACTIVE WORLDS / 180D</text><text x="422" y="313" text-anchor="end" class="value mono">6</text><text x="500" y="313" class="label mono">RELEASES PUBLISHED</text><text x="860" y="313" text-anchor="end" class="value mono">0</text><text x="62" y="380" class="label mono">TOP SIGNAL</text><text x="422" y="380" text-anchor="end" class="value mono">PYTHON</text><text x="500" y="380" class="label mono">STARS RECEIVED</text><text x="860" y="380" text-anchor="end" class="value mono">3</text>
+  <text x="898" y="143" text-anchor="end" class="display" fill="#FFB800" font-size="31">LVL 03</text>
+  <text x="898" y="181" text-anchor="end" class="mono" fill="#39FF14" font-size="17">STATUS  READY</text>
+  <text x="62" y="246" class="label mono">PUBLIC SOURCE REPOS</text><text x="422" y="246" text-anchor="end" class="value mono">29</text><text x="500" y="246" class="label mono">PUBLIC COMMITS / 30D</text><text x="860" y="246" text-anchor="end" class="value mono">0</text><text x="62" y="313" class="label mono">ACTIVE WORLDS / 180D</text><text x="422" y="313" text-anchor="end" class="value mono">5</text><text x="500" y="313" class="label mono">RELEASES PUBLISHED</text><text x="860" y="313" text-anchor="end" class="value mono">0</text><text x="62" y="380" class="label mono">TOP SIGNAL</text><text x="422" y="380" text-anchor="end" class="value mono">PYTHON</text><text x="500" y="380" class="label mono">STARS RECEIVED</text><text x="860" y="380" text-anchor="end" class="value mono">3</text>
   <text x="62" y="456" class="label mono">PLAYER XP // PLAYFUL PROFILE METRIC</text>
-  <text x="898" y="456" text-anchor="end" class="value mono">3,085 XP</text>
+  <text x="898" y="456" text-anchor="end" class="value mono">2,960 XP</text>
   <rect x="62" y="474" width="520" height="15" rx="7.5" fill="#241344" stroke="#7B2FF7"/>
-  <rect x="62" y="474" width="44" height="15" rx="7.5" fill="#FF2E97"/>
-  <text x="322" y="518" text-anchor="middle" class="mono" fill="#C9D1D9" font-size="12">85 / 1000 TO NEXT LEVEL</text>
+  <rect x="62" y="474" width="499" height="15" rx="7.5" fill="#FF2E97"/>
+  <text x="322" y="518" text-anchor="middle" class="mono" fill="#C9D1D9" font-size="12">960 / 1000 TO NEXT LEVEL</text>
   <text x="898" y="487" text-anchor="end" class="mono" fill="#C9D1D9" font-size="13">LAST SAVE  24 AUG 2026</text>
 </svg>

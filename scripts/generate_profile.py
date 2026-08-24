@@ -9,14 +9,25 @@ import os
 import tempfile
 import textwrap
 import xml.etree.ElementTree as ET
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any, Callable, Iterable
 from urllib.parse import urlparse
 
 import yaml
 
 from github_data import fetch_profile_data
+from activity import (
+    ActivityItem,
+    current_state,
+    meaningful_activity,
+    parse_timestamp,
+    published_state,
+    relative_age,
+    release_status,
+    score_repositories,
+    select_now_playing,
+)
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -94,6 +105,15 @@ def _svg_shell(
       .label {{ fill: #C9D1D9; font-size: 15px; letter-spacing: 1.4px; }}
       .value {{ fill: #FFFFFF; font-size: 22px; font-weight: 700; }}
       .muted {{ fill: #C9D1D9; font-size: 14px; }}
+      .pulse-dot {{ animation: hudPulse 2.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }}
+      .radar-sweep {{ animation: radarSweep 5s linear infinite; }}
+      .cursor {{ animation: cursorBlink 1.15s steps(1, end) infinite; }}
+      @keyframes hudPulse {{ 0%, 100% {{ opacity: .45; transform: scale(.82); }} 50% {{ opacity: 1; transform: scale(1); }} }}
+      @keyframes radarSweep {{ 0% {{ transform: translateX(-720px); opacity: 0; }} 12%, 88% {{ opacity: .65; }} 100% {{ transform: translateX(720px); opacity: 0; }} }}
+      @keyframes cursorBlink {{ 0%, 48% {{ opacity: 1; }} 49%, 100% {{ opacity: 0; }} }}
+      @media (prefers-reduced-motion: reduce) {{
+        .pulse-dot, .radar-sweep, .cursor {{ animation: none !important; }}
+      }}
     </style>
   </defs>
   <rect width="{width}" height="{height}" rx="20" fill="#0D0221"/>
@@ -273,8 +293,229 @@ def render_ship_log_svg(data: dict[str, Any]) -> str:
     )
 
 
-def render_world_select_svg(projects: Iterable[dict[str, Any]]) -> str:
+def _activity_items(data: dict[str, Any]) -> list[ActivityItem]:
+    items: list[ActivityItem] = []
+    for value in data.get("activity") or []:
+        try:
+            items.append(ActivityItem.from_mapping(value))
+        except (TypeError, ValueError, KeyError):
+            continue
+    return meaningful_activity(items, username=str(data.get("username") or ""))
+
+
+def _sync_label(data: dict[str, Any]) -> str:
+    return parse_timestamp(data["generated_at"]).strftime("%Y-%m-%d %H:%M UTC")
+
+
+def render_now_playing_svg(data: dict[str, Any], projects: list[dict[str, Any]]) -> str:
+    now = parse_timestamp(data["generated_at"])
+    items = _activity_items(data)
+    repositories = data.get("repositories") or []
+    selected = select_now_playing(
+        items,
+        repositories,
+        username=str(data.get("username") or ""),
+    )
+    if selected:
+        repository = selected["repository"]
+        project = next(
+            (
+                project
+                for project in projects
+                if Path(urlparse(str(project.get("github") or "")).path).name.casefold()
+                == repository.casefold()
+            ),
+            None,
+        )
+        repo = next((repo for repo in repositories if repo.get("name") == repository), {})
+        tech = (project or {}).get("engine") or repo.get("language") or "PUBLIC REPOSITORY"
+        state = current_state(selected["timestamp"], now=now)
+        state_color = "#39FF14" if state in {"SHIPPING", "BUILDING", "ACTIVE"} else "#FFB800"
+        age = relative_age(selected["timestamp"], now=now)
+        branch = selected.get("branch")
+        branch_node = (
+            f'<text x="72" y="250" class="mono" fill="#C9D1D9" font-size="14">BRANCH  {_escape(_truncate(branch, 44))}</text>'
+            if branch
+            else ""
+        )
+        body = f'''
+  <text x="62" y="68" class="display" fill="#00F0FF" font-size="30">NOW PLAYING</text>
+  <text x="898" y="66" text-anchor="end" class="mono" fill="#C9D1D9" font-size="12">LAST SYNC // {_sync_label(data)}</text>
+  <line x1="62" y1="90" x2="898" y2="90" stroke="#7B2FF7" stroke-width="2"/>
+  <circle class="pulse-dot" cx="77" cy="137" r="7" fill="{state_color}" filter="url(#glow)"/>
+  <text x="98" y="143" class="mono" fill="{state_color}" font-size="16" font-weight="700">{_escape(state)} // {age}</text>
+  <text x="70" y="196" class="display" fill="#FFFFFF" font-size="38">{_escape(_truncate(repository.upper(), 34))}</text>
+  <text x="898" y="195" text-anchor="end" class="mono" fill="#FFB800" font-size="15">LOADOUT // {_escape(str(tech).upper())}</text>
+{branch_node}
+  <rect x="62" y="280" width="836" height="62" rx="8" fill="#14072D" stroke="#463068"/>
+  <text x="82" y="307" class="mono" fill="#7B2FF7" font-size="12">LATEST MEANINGFUL SIGNAL</text>
+  <text x="82" y="330" class="mono" fill="#FFFFFF" font-size="15">{_escape(_truncate(selected['summary'], 84))}</text>
+  <text class="cursor mono" x="888" y="330" text-anchor="end" fill="#00F0FF" font-size="18">▮</text>
+'''
+    else:
+        body = f'''
+  <text x="62" y="68" class="display" fill="#00F0FF" font-size="30">NOW PLAYING</text>
+  <text x="898" y="66" text-anchor="end" class="mono" fill="#C9D1D9" font-size="12">LAST SYNC // {_sync_label(data)}</text>
+  <line x1="62" y1="90" x2="898" y2="90" stroke="#7B2FF7" stroke-width="2"/>
+  <text x="480" y="204" text-anchor="middle" class="display" fill="#FFB800" font-size="30">NO PUBLIC WORLD SIGNAL</text>
+  <text x="480" y="246" text-anchor="middle" class="mono" fill="#C9D1D9" font-size="15">THE HUD WILL RESUME WHEN A MEANINGFUL PUBLIC PUSH APPEARS.</text>
+'''
+    return _svg_shell(
+        title="Now Playing — latest meaningful public repository",
+        description="The most recently active meaningful public repository, with a timestamp-derived activity state and latest factual signal.",
+        body=body,
+        width=960,
+        height=380,
+        accent=PALETTE["cyan"],
+    )
+
+
+def render_activity_radar_svg(data: dict[str, Any]) -> str:
+    now = parse_timestamp(data["generated_at"])
+    cutoff = now - timedelta(days=14)
+    visible = [item for item in _activity_items(data) if parse_timestamp(item.timestamp) >= cutoff]
+    colors = {"COMMIT": "#00F0FF", "PUSH": "#7B2FF7", "MERGE": "#FF2E97", "RELEASE": "#39FF14"}
+    nodes: list[str] = []
+    for index, item in enumerate(visible[:18]):
+        age = (now - parse_timestamp(item.timestamp)).total_seconds()
+        x = 850 - int(min(14 * 86400, max(0, age)) / (14 * 86400) * 740)
+        y = 154 + (index % 3) * 44
+        color = colors.get(item.kind, "#FFB800")
+        nodes.append(f'<line x1="{x}" y1="126" x2="{x}" y2="{y}" stroke="{color}" stroke-opacity=".35"/>')
+        nodes.append(f'<circle class="pulse-dot" cx="{x}" cy="{y}" r="6" fill="{color}"/>')
+    signal = (
+        f'{len(visible)} PUBLIC PULSE{"S" if len(visible) != 1 else ""} // 14D'
+        if visible
+        else "NO PUBLIC PULSES DETECTED // 14D"
+    )
+    body = f'''
+  <text x="62" y="68" class="display" fill="#FF2E97" font-size="30">ACTIVITY RADAR // 14D</text>
+  <text x="898" y="66" text-anchor="end" class="mono" fill="#C9D1D9" font-size="12">LAST SYNC // {_sync_label(data)}</text>
+  <line x1="62" y1="90" x2="898" y2="90" stroke="#7B2FF7" stroke-width="2"/>
+  <rect x="100" y="116" width="760" height="160" rx="8" fill="#100529" stroke="#463068"/>
+  <line x1="110" y1="250" x2="850" y2="250" stroke="#7B2FF7" stroke-width="2"/>
+  <line class="radar-sweep" x1="480" y1="122" x2="480" y2="270" stroke="#00F0FF" stroke-width="3" filter="url(#glow)"/>
+{''.join(nodes)}
+  <text x="110" y="302" class="mono" fill="#C9D1D9" font-size="12">14 DAYS AGO</text>
+  <text x="850" y="302" text-anchor="end" class="mono" fill="#C9D1D9" font-size="12">SYNC</text>
+  <text x="480" y="340" text-anchor="middle" class="mono" fill="#FFB800" font-size="14" font-weight="700">{signal}</text>
+'''
+    return _svg_shell(
+        title="Activity Radar — fourteen days of public development signals",
+        description="A fourteen-day timeline of public commits, pushes, merged pull requests, and releases. Motion is decorative and respects reduced-motion preferences.",
+        body=body,
+        width=960,
+        height=372,
+        accent=PALETTE["magenta"],
+    )
+
+
+def render_live_feed_svg(data: dict[str, Any], projects: list[dict[str, Any]]) -> str:
+    now = parse_timestamp(data["generated_at"])
+    items = _activity_items(data)
+    pushes = [item for item in items if item.kind in {"COMMIT", "PUSH"}][:5]
+    repos = (data.get("repositories") or [])[:6]
+    scored = score_repositories(items, data.get("repositories") or [], now=now)
+    releases_by_repo = {str(item.get("repository") or "").casefold() for item in data.get("release_feed") or []}
+    nodes: list[str] = []
+    left_y = 142
+    if pushes:
+        for index, item in enumerate(pushes):
+            y = left_y + index * 58
+            nodes.extend([
+                f'<text x="62" y="{y}" class="mono" fill="#00F0FF" font-size="12">{_escape(item.timestamp[:10])}</text>',
+                f'<text x="164" y="{y}" class="mono" fill="#FFFFFF" font-size="14" font-weight="700">{_escape(_truncate(item.repository, 24))}</text>',
+                f'<text x="164" y="{y + 20}" class="mono" fill="#C9D1D9" font-size="12">{_escape(_truncate(item.summary, 42))}</text>',
+            ])
+    else:
+        nodes.append('<text x="62" y="162" class="mono" fill="#FFB800" font-size="14">NO MEANINGFUL PUBLIC PUSHES IN THE CURRENT WINDOW.</text>')
+
+    if repos:
+        for index, repo in enumerate(repos[:5]):
+            y = left_y + index * 58
+            state = current_state(repo["pushed_at"], now=now)
+            state_color = "#39FF14" if state in {"SHIPPING", "BUILDING", "ACTIVE"} else "#FFB800"
+            nodes.extend([
+                f'<text x="525" y="{y}" class="mono" fill="#FFFFFF" font-size="14" font-weight="700">{_escape(_truncate(repo["name"], 25))}</text>',
+                f'<text x="525" y="{y + 20}" class="mono" fill="#C9D1D9" font-size="12">{_escape(str(repo.get("language") or "N/A").upper())} // {relative_age(repo["pushed_at"], now=now)}</text>',
+                f'<text x="898" y="{y}" text-anchor="end" class="mono" fill="{state_color}" font-size="12">{state}</text>',
+            ])
+    else:
+        nodes.append('<text x="525" y="162" class="mono" fill="#FFB800" font-size="14">NO PUBLIC WORLDS AVAILABLE.</text>')
+
+    if scored:
+        hot = scored[0]
+        hot_text = f'{hot["repository"]} // ACTIVITY SCORE {hot["score"]}'
+    else:
+        hot_text = "NO HOT WORLD // SIGNAL BELOW THRESHOLD"
+    status_parts = []
+    for project in projects[:4]:
+        repo_name = Path(urlparse(str(project.get("github") or "")).path).name.casefold()
+        state = published_state(project, has_release=repo_name in releases_by_repo)
+        status_parts.append(f'{project["name"]}: {state}')
+    status_text = "  •  ".join(status_parts)
+    body = f'''
+  <text x="62" y="68" class="display" fill="#39FF14" font-size="30">LIVE FEED // PLAYER ACTIVITY</text>
+  <text x="898" y="66" text-anchor="end" class="mono" fill="#C9D1D9" font-size="12">LAST SYNC // {_sync_label(data)}</text>
+  <line x1="62" y1="90" x2="898" y2="90" stroke="#7B2FF7" stroke-width="2"/>
+  <text x="62" y="116" class="mono" fill="#FF2E97" font-size="13" font-weight="700">RECENT PUSHES</text>
+  <text x="525" y="116" class="mono" fill="#FF2E97" font-size="13" font-weight="700">RECENTLY PLAYED WORLDS</text>
+  <line x1="480" y1="110" x2="480" y2="430" stroke="#463068"/>
+  {''.join(nodes)}
+  <rect x="62" y="452" width="836" height="70" rx="8" fill="#14072D" stroke="#FFB800"/>
+  <text x="82" y="480" class="mono" fill="#FFB800" font-size="12">HOT WORLD // 30D // COMMITS×1 + PUSH×2 + MERGE×3 + RELEASE×5</text>
+  <text x="82" y="506" class="mono" fill="#FFFFFF" font-size="16" font-weight="700">{_escape(_truncate(hot_text, 78))}</text>
+  <text x="62" y="568" class="mono" fill="#00F0FF" font-size="13" font-weight="700">SYSTEM STATUS // VERIFIED CONFIG + PUBLIC RELEASES</text>
+  <text x="62" y="600" class="mono" fill="#C9D1D9" font-size="12">{_escape(_truncate(status_text, 118))}</text>
+'''
+    return _svg_shell(
+        title="Live Feed — recent pushes, recently played worlds, and system status",
+        description="A compact public activity feed with recent development signals, repository recency, activity scoring, and verified project publication states.",
+        body=body,
+        width=960,
+        height=640,
+        accent=PALETTE["green"],
+    )
+
+
+def render_release_radar_svg(data: dict[str, Any], projects: list[dict[str, Any]]) -> str:
+    now = parse_timestamp(data["generated_at"])
+    releases = data.get("release_feed") or []
+    latest = releases[0] if releases else None
+    label = release_status(latest, now=now)
+    if latest:
+        release_name = _truncate(str(latest.get("name") or latest.get("tag") or "Release"), 54)
+        detail = f'{latest.get("repository")} // {release_name}'
+        date = parse_timestamp(latest["published_at"]).strftime("%Y-%m-%d %H:%M UTC")
+        footer = f'PUBLISHED // {date}'
+    else:
+        playable = sum(1 for project in projects if published_state(project, has_release=False) == "PLAYABLE")
+        detail = "NO PUBLIC GITHUB RELEASE DETECTED"
+        footer = f"VERIFIED PLAYABLE BUILDS // {playable}"
+    body = f'''
+  <text x="62" y="68" class="display" fill="#FFB800" font-size="30">RELEASE RADAR</text>
+  <text x="898" y="66" text-anchor="end" class="mono" fill="#C9D1D9" font-size="12">LAST SYNC // {_sync_label(data)}</text>
+  <line x1="62" y1="90" x2="898" y2="90" stroke="#7B2FF7" stroke-width="2"/>
+  <rect x="62" y="120" width="178" height="48" rx="6" fill="#241344" stroke="#39FF14"/>
+  <text x="151" y="151" text-anchor="middle" class="mono" fill="#39FF14" font-size="14" font-weight="700">{label}</text>
+  <text x="62" y="226" class="display" fill="#FFFFFF" font-size="31">{_escape(detail.upper())}</text>
+  <text x="62" y="272" class="mono" fill="#C9D1D9" font-size="14">{_escape(footer)}</text>
+'''
+    return _svg_shell(
+        title="Release Radar — latest public GitHub release",
+        description="The newest factual public GitHub release, or an explicit no-release state paired with the count of verified playable builds.",
+        body=body,
+        width=960,
+        height=310,
+        accent=PALETTE["gold"],
+    )
+
+
+def render_world_select_svg(
+    projects: Iterable[dict[str, Any]], release_repositories: set[str] | None = None
+) -> str:
     featured = [project for project in projects if project.get("featured")]
+    release_repositories = release_repositories or set()
     card_height = 244
     height = 116 + len(featured) * card_height
     colors = ["#FF2E97", "#00F0FF", "#7B2FF7", "#39FF14"]
@@ -283,6 +524,9 @@ def render_world_select_svg(projects: Iterable[dict[str, Any]]) -> str:
         y = 100 + index * card_height
         accent = colors[index % len(colors)]
         stack = " / ".join(project["stack"])
+        repo_name = Path(urlparse(str(project.get("github") or "")).path).name.casefold()
+        state = published_state(project, has_release=repo_name in release_repositories)
+        state_color = "#39FF14" if state in {"PLAYABLE", "RELEASED"} else "#FFB800"
         lines = textwrap.wrap(project["description"], width=86)[:2]
         nodes.extend(
             [
@@ -301,7 +545,8 @@ def render_world_select_svg(projects: Iterable[dict[str, Any]]) -> str:
             [
                 f'<text x="74" y="{y + 198}" class="mono" fill="#FFFFFF" font-size="13">ROLE  {_escape(project["role"].upper())}</text>',
                 f'<text x="475" y="{y + 198}" class="mono" fill="#C9D1D9" font-size="13">LOADOUT  {_escape(_truncate(stack.upper(), 50))}</text>',
-                f'<text x="895" y="{y + 44}" text-anchor="end" class="mono" fill="#39FF14" font-size="13">{_escape(project["status"].upper())}</text>',
+                f'<circle cx="{760}" cy="{y + 39}" r="5" fill="{state_color}"/>',
+                f'<text x="895" y="{y + 44}" text-anchor="end" class="mono" fill="{state_color}" font-size="13" font-weight="700">{_escape(state)}</text>',
             ]
         )
     body = f'''
@@ -426,10 +671,17 @@ def generate(
     if not isinstance(projects, list):
         raise ValueError("profile/projects.yml must contain a projects list")
 
+    release_repositories = {
+        str(item.get("repository") or "").casefold() for item in data.get("release_feed") or []
+    }
     assets = {
         "hero.svg": render_hero_svg(profile),
         "player-save.svg": render_player_save_svg(data, profile),
-        "world-select.svg": render_world_select_svg(projects),
+        "world-select.svg": render_world_select_svg(projects, release_repositories),
+        "now-playing.svg": render_now_playing_svg(data, projects),
+        "activity-radar.svg": render_activity_radar_svg(data),
+        "live-feed.svg": render_live_feed_svg(data, projects),
+        "release-radar.svg": render_release_radar_svg(data, projects),
         "dev-dna.svg": render_dev_dna_svg(profile),
         "ship-log.svg": render_ship_log_svg(data),
     }
@@ -443,6 +695,40 @@ def generate(
         destination.write_text(rendered, encoding="utf-8", newline="\n")
         written.append(destination)
     return written
+
+
+def generate_live(
+    *,
+    username: str,
+    token: str | None,
+    profile_path: Path,
+    projects_path: Path,
+    output_dir: Path,
+    readme_path: Path | None,
+    readme_output: Path | None,
+    fetcher: Callable[..., dict[str, Any]] = fetch_profile_data,
+) -> list[Path]:
+    """Fetch first, then render atomically so API failure preserves good output."""
+
+    configured_projects = load_yaml(projects_path).get("projects") or []
+    preferred_repositories = {
+        Path(urlparse(project["github"]).path).name
+        for project in configured_projects
+        if project.get("featured") and project.get("github")
+    }
+    data = fetcher(
+        username,
+        token,
+        preferred_repositories=preferred_repositories,
+    )
+    return generate(
+        profile_path=profile_path,
+        projects_path=projects_path,
+        output_dir=output_dir,
+        data=data,
+        readme_path=readme_path,
+        readme_output=readme_output,
+    )
 
 
 def parse_args() -> argparse.Namespace:
@@ -462,27 +748,24 @@ def main() -> int:
     args = parse_args()
     if args.fixture:
         data = json.loads(args.fixture.read_text(encoding="utf-8"))
-    else:
-        configured_projects = load_yaml(args.projects).get("projects") or []
-        preferred_repositories = {
-            Path(urlparse(project["github"]).path).name
-            for project in configured_projects
-            if project.get("featured") and project.get("github")
-        }
-        data = fetch_profile_data(
-            args.username,
-            os.environ.get("GITHUB_TOKEN"),
-            preferred_repositories=preferred_repositories,
+        written = generate(
+            profile_path=args.profile,
+            projects_path=args.projects,
+            output_dir=args.output_dir,
+            data=data,
+            readme_path=None if args.no_readme else args.readme,
+            readme_output=args.readme_output,
         )
-
-    written = generate(
-        profile_path=args.profile,
-        projects_path=args.projects,
-        output_dir=args.output_dir,
-        data=data,
-        readme_path=None if args.no_readme else args.readme,
-        readme_output=args.readme_output,
-    )
+    else:
+        written = generate_live(
+            username=args.username,
+            token=os.environ.get("GITHUB_TOKEN"),
+            profile_path=args.profile,
+            projects_path=args.projects,
+            output_dir=args.output_dir,
+            readme_path=None if args.no_readme else args.readme,
+            readme_output=args.readme_output,
+        )
     print(f"Generated {len(written)} Player Profile OS files.")
     return 0
 

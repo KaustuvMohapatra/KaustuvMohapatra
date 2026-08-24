@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="310" viewBox="0 0 960 310" role="img" aria-labelledby="svg-title svg-desc">
+  <title id="svg-title">Release Radar — latest public GitHub release</title>
+  <desc id="svg-desc">The newest factual public GitHub release, or an explicit no-release state paired with the count of verified playable builds.</desc>
+  <defs>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#7B2FF7" stroke-opacity="0.10" stroke-width="1"/>
+    </pattern>
+    <pattern id="scanlines" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="1" fill="#FFFFFF" opacity="0.025"/>
+    </pattern>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <style>
+      .display { font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-weight: 800; letter-spacing: 2px; }
+      .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+      .label { fill: #C9D1D9; font-size: 15px; letter-spacing: 1.4px; }
+      .value { fill: #FFFFFF; font-size: 22px; font-weight: 700; }
+      .muted { fill: #C9D1D9; font-size: 14px; }
+      .pulse-dot { animation: hudPulse 2.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+      .radar-sweep { animation: radarSweep 5s linear infinite; }
+      .cursor { animation: cursorBlink 1.15s steps(1, end) infinite; }
+      @keyframes hudPulse { 0%, 100% { opacity: .45; transform: scale(.82); } 50% { opacity: 1; transform: scale(1); } }
+      @keyframes radarSweep { 0% { transform: translateX(-720px); opacity: 0; } 12%, 88% { opacity: .65; } 100% { transform: translateX(720px); opacity: 0; } }
+      @keyframes cursorBlink { 0%, 48% { opacity: 1; } 49%, 100% { opacity: 0; } }
+      @media (prefers-reduced-motion: reduce) {
+        .pulse-dot, .radar-sweep, .cursor { animation: none !important; }
+      }
+    </style>
+  </defs>
+  <rect width="960" height="310" rx="20" fill="#0D0221"/>
+  <rect x="1.5" y="1.5" width="957" height="307" rx="18.5" fill="none" stroke="#FFB800" stroke-width="3"/>
+  <rect x="12" y="12" width="936" height="286" rx="12" fill="url(#grid)"/>
+  <rect width="960" height="310" rx="20" fill="url(#scanlines)"/>
+  <text x="62" y="68" class="display" fill="#FFB800" font-size="30">RELEASE RADAR</text>
+  <text x="898" y="66" text-anchor="end" class="mono" fill="#C9D1D9" font-size="12">LAST SYNC // 2026-08-24 09:55 UTC</text>
+  <line x1="62" y1="90" x2="898" y2="90" stroke="#7B2FF7" stroke-width="2"/>
+  <rect x="62" y="120" width="178" height="48" rx="6" fill="#241344" stroke="#39FF14"/>
+  <text x="151" y="151" text-anchor="middle" class="mono" fill="#39FF14" font-size="14" font-weight="700">NO RELEASE</text>
+  <text x="62" y="226" class="display" fill="#FFFFFF" font-size="31">NO PUBLIC GITHUB RELEASE DETECTED</text>
+  <text x="62" y="272" class="mono" fill="#C9D1D9" font-size="14">VERIFIED PLAYABLE BUILDS // 3</text>
+</svg>

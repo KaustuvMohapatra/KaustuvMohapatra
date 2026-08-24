@@ -7,6 +7,100 @@
   "stars_received": 4,
   "top_language": "Python",
   "generated_at": "2026-08-23T12:00:00+00:00",
+  "repositories": [
+    {
+      "name": "Arena-Survivor",
+      "pushed_at": "2026-08-21T18:30:00Z",
+      "language": "C#",
+      "html_url": "https://github.com/KaustuvMohapatra/Arena-Survivor",
+      "default_branch": "main",
+      "archived": false,
+      "fork": false
+    },
+    {
+      "name": "typemaker",
+      "pushed_at": "2026-08-18T10:00:00Z",
+      "language": "TypeScript",
+      "html_url": "https://github.com/KaustuvMohapatra/typemaker",
+      "default_branch": "main",
+      "archived": false,
+      "fork": false
+    },
+    {
+      "name": "AI-Game-Asset-Maker",
+      "pushed_at": "2026-08-14T09:15:00Z",
+      "language": "Python",
+      "html_url": "https://github.com/KaustuvMohapatra/AI-Game-Asset-Maker",
+      "default_branch": "main",
+      "archived": false,
+      "fork": false
+    },
+    {
+      "name": "MedLingo",
+      "pushed_at": "2026-07-30T08:00:00Z",
+      "language": "JavaScript",
+      "html_url": "https://github.com/KaustuvMohapatra/MedLingo",
+      "default_branch": "main",
+      "archived": false,
+      "fork": false
+    }
+  ],
+  "activity": [
+    {
+      "kind": "PUSH",
+      "repository": "Arena-Survivor",
+      "timestamp": "2026-08-21T18:30:00Z",
+      "summary": "Pushed 3 commits",
+      "url": "https://github.com/KaustuvMohapatra/Arena-Survivor",
+      "branch": "main",
+      "commits": 3
+    },
+    {
+      "kind": "COMMIT",
+      "repository": "Arena-Survivor",
+      "timestamp": "2026-08-21T18:25:00Z",
+      "summary": "Tune enemy wave pacing",
+      "url": "https://github.com/KaustuvMohapatra/Arena-Survivor/commit/fixture",
+      "branch": "",
+      "commits": 1
+    },
+    {
+      "kind": "RELEASE",
+      "repository": "typemaker",
+      "timestamp": "2026-08-18T10:00:00Z",
+      "summary": "Published v1.2.0",
+      "url": "https://github.com/KaustuvMohapatra/typemaker/releases/tag/v1.2.0",
+      "branch": "",
+      "commits": 1
+    },
+    {
+      "kind": "MERGE",
+      "repository": "AI-Game-Asset-Maker",
+      "timestamp": "2026-08-14T09:15:00Z",
+      "summary": "Merged PR #8",
+      "url": "https://github.com/KaustuvMohapatra/AI-Game-Asset-Maker/pull/8",
+      "branch": "",
+      "commits": 1
+    },
+    {
+      "kind": "COMMIT",
+      "repository": "KaustuvMohapatra",
+      "timestamp": "2026-08-22T12:00:00Z",
+      "summary": "chore(profile): update player save",
+      "url": "",
+      "branch": "main",
+      "commits": 1
+    }
+  ],
+  "release_feed": [
+    {
+      "repository": "typemaker",
+      "name": "TypeMaker v1.2.0",
+      "tag": "v1.2.0",
+      "published_at": "2026-08-18T10:00:00Z",
+      "url": "https://github.com/KaustuvMohapatra/typemaker/releases/tag/v1.2.0"
+    }
+  ],
   "ship_log": [
     {
       "date": "2026-08-21",
