@@ -34,7 +34,7 @@
   <rect x="12" y="12" width="936" height="616" rx="12" fill="url(#grid)"/>
   <rect width="960" height="640" rx="20" fill="url(#scanlines)"/>
   <text x="62" y="68" class="display" fill="#39FF14" font-size="30">LIVE FEED // PLAYER ACTIVITY</text>
-  <text x="898" y="66" text-anchor="end" class="mono" fill="#C9D1D9" font-size="12">LAST SYNC // 2026-08-24 19:03 UTC</text>
+  <text x="898" y="66" text-anchor="end" class="mono" fill="#C9D1D9" font-size="12">LAST SYNC // 2026-08-24 19:48 UTC</text>
   <line x1="62" y1="90" x2="898" y2="90" stroke="#7B2FF7" stroke-width="2"/>
   <text x="62" y="116" class="mono" fill="#FF2E97" font-size="13" font-weight="700">RECENT PUSHES</text>
   <text x="525" y="116" class="mono" fill="#FF2E97" font-size="13" font-weight="700">RECENTLY PLAYED WORLDS</text>
