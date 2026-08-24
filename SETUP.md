@@ -11,6 +11,6 @@ python -m unittest discover -s tests -v
 python scripts/validate_profile.py
 ```
 
-No repository secret is required. After the feature branch is merged, run **Generate Contribution Snake** once from the Actions tab if you want an immediate refresh instead of waiting for the daily schedule.
+No repository secret is required. Live telemetry refreshes hourly after merge. Run **Update Player Save** manually for an immediate refresh, and run **Generate Contribution Snake** once if you do not want to wait for its daily schedule.
 
 Maintenance instructions, the XP formula, configuration fields, and workflow behavior are documented in [CONTRIBUTING.md](./CONTRIBUTING.md).

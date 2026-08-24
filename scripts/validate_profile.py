@@ -26,12 +26,15 @@ PROJECT_REQUIRED_FIELDS = {
     "stack",
     "github",
     "featured",
+    "published",
+    "lifecycle",
 }
 REQUIRED_README_SECTIONS = {
     "PLAYER PROFILE // SAVE IDENTITY",
     "MISSION LOG // BUILD PHILOSOPHY",
     "PLAYER SAVE // LIVE TELEMETRY",
     "WORLD SELECT // FEATURED BUILDS",
+    "LIVE SYSTEM // PLAYER ACTIVITY",
     "CURRENT QUEST // NOW LOADING",
     "DEV DNA // CURRENT BUILD",
     "TECH TREE // LOADOUT",
@@ -79,6 +82,21 @@ def validate_projects(projects: list[dict[str, Any]]) -> None:
         demo = project.get("demo")
         if demo and not _valid_url(demo):
             raise ValidationError(f"Invalid demo URL for {project_id}")
+        published = project["published"]
+        if not isinstance(published, dict) or published.get("type") not in {
+            "none",
+            "itch",
+            "web",
+            "download",
+        }:
+            raise ValidationError(f"Invalid published type for {project_id}")
+        published_url = published.get("url")
+        if published["type"] == "none" and published_url:
+            raise ValidationError(f"Unpublished project {project_id} cannot have a published URL")
+        if published["type"] != "none" and not _valid_url(str(published_url or "")):
+            raise ValidationError(f"Published project {project_id} needs a valid URL")
+        if project["lifecycle"] not in {"active-development", "prototype", "archived"}:
+            raise ValidationError(f"Invalid lifecycle for {project_id}")
         if not isinstance(project["stack"], list) or not project["stack"]:
             raise ValidationError(f"Project {project_id} needs a non-empty stack")
         featured_count += int(bool(project["featured"]))
@@ -112,7 +130,17 @@ def validate_profile(profile: dict[str, Any]) -> None:
 
 
 def validate_svg_directory(directory: Path) -> None:
-    expected = {"hero.svg", "player-save.svg", "world-select.svg", "dev-dna.svg", "ship-log.svg"}
+    expected = {
+        "hero.svg",
+        "player-save.svg",
+        "world-select.svg",
+        "now-playing.svg",
+        "activity-radar.svg",
+        "live-feed.svg",
+        "release-radar.svg",
+        "dev-dna.svg",
+        "ship-log.svg",
+    }
     missing = [name for name in sorted(expected) if not (directory / name).is_file()]
     if missing:
         raise ValidationError(f"Missing generated SVGs in {directory}: {missing}")

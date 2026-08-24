@@ -18,6 +18,15 @@
       .label { fill: #C9D1D9; font-size: 15px; letter-spacing: 1.4px; }
       .value { fill: #FFFFFF; font-size: 22px; font-weight: 700; }
       .muted { fill: #C9D1D9; font-size: 14px; }
+      .pulse-dot { animation: hudPulse 2.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+      .radar-sweep { animation: radarSweep 5s linear infinite; }
+      .cursor { animation: cursorBlink 1.15s steps(1, end) infinite; }
+      @keyframes hudPulse { 0%, 100% { opacity: .45; transform: scale(.82); } 50% { opacity: 1; transform: scale(1); } }
+      @keyframes radarSweep { 0% { transform: translateX(-720px); opacity: 0; } 12%, 88% { opacity: .65; } 100% { transform: translateX(720px); opacity: 0; } }
+      @keyframes cursorBlink { 0%, 48% { opacity: 1; } 49%, 100% { opacity: 0; } }
+      @media (prefers-reduced-motion: reduce) {
+        .pulse-dot, .radar-sweep, .cursor { animation: none !important; }
+      }
     </style>
   </defs>
   <rect width="960" height="498" rx="20" fill="#0D0221"/>

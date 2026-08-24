@@ -74,7 +74,7 @@ class ProfileGeneratorTests(unittest.TestCase):
                 text=True,
             )
             generated = sorted(output.glob("*.svg"))
-            self.assertEqual(len(generated), 5)
+            self.assertEqual(len(generated), 9)
             for path in generated:
                 self.assertGreater(path.stat().st_size, 100)
                 self.assertTrue(ET.parse(path).getroot().tag.endswith("svg"))
@@ -86,7 +86,7 @@ class ProfileGeneratorTests(unittest.TestCase):
     def test_readme_local_asset_references_resolve(self) -> None:
         text = (ROOT / "README.md").read_text(encoding="utf-8")
         references = local_asset_references(text)
-        self.assertGreaterEqual(len(references), 7)
+        self.assertGreaterEqual(len(references), 11)
         for reference in references:
             self.assertTrue((ROOT / reference.removeprefix("./")).is_file(), reference)
 

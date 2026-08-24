@@ -33,7 +33,7 @@ FOCUS:
   - Generative AI
   - Multiplayer
   - Interactive Web
-STATUS:    ONLINE
+STATUS:    READY
 ```
 <!-- PLAYER_OS:PLAYER_PROFILE:END -->
 
@@ -76,6 +76,18 @@ LEVEL = floor(XP / 1000) + 1
 **WORLD 04 // MEDLINGO** — Medical revision re-engineered as a game loop.<br />
 [SOURCE](https://github.com/KaustuvMohapatra/MedLingo) · [ENTER WORLD](https://medlingo-pied.vercel.app/)
 <!-- PLAYER_OS:WORLD_LINKS:END -->
+
+## LIVE SYSTEM // PLAYER ACTIVITY
+
+<img src="./assets/generated/now-playing.svg" width="100%" alt="Now Playing showing the latest meaningful public repository signal and timestamp-derived activity state" />
+
+<img src="./assets/generated/live-feed.svg" width="100%" alt="Live Feed showing recent public pushes, recently played repositories, activity score, and verified project states" />
+
+<img src="./assets/generated/activity-radar.svg" width="100%" alt="Activity Radar plotting public commits, pushes, merged pull requests, and releases from the last fourteen days" />
+
+<img src="./assets/generated/release-radar.svg" width="100%" alt="Release Radar showing the latest factual public GitHub release or an explicit no-release state" />
+
+Live signals exclude this profile repository, bot activity, dependency bumps, and formatting-only noise. Activity states describe timestamp recency—not whether I am online right now.
 
 ## CURRENT QUEST // NOW LOADING
 
@@ -172,6 +184,6 @@ NPC_MIRA_CONNECTED // MORALE +1 🛐
 
 <br /><br />
 
-`PRESS START TO CONNECT // PLAYER 1 REMAINS ONLINE`
+`PRESS START TO CONNECT // PLAYER 1 READY`
 
 </div>

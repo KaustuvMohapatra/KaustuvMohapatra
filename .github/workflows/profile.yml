@@ -2,8 +2,11 @@ name: Update Player Save
 
 on:
   schedule:
-    - cron: "23 2 * * *"
+    - cron: "17 * * * *"
   workflow_dispatch:
+  repository_dispatch:
+    types:
+      - profile-telemetry
   push:
     branches:
       - main
@@ -16,8 +19,8 @@ permissions:
   contents: write
 
 concurrency:
-  group: player-profile-generation
-  cancel-in-progress: false
+  group: profile-telemetry
+  cancel-in-progress: true
 
 jobs:
   update:
