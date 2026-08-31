@@ -34,10 +34,10 @@
   <rect x="12" y="12" width="936" height="356" rx="12" fill="url(#grid)"/>
   <rect width="960" height="380" rx="20" fill="url(#scanlines)"/>
   <text x="62" y="68" class="display" fill="#00F0FF" font-size="30">NOW PLAYING</text>
-  <text x="898" y="66" text-anchor="end" class="mono" fill="#C9D1D9" font-size="12">LAST SYNC // 2026-08-31 05:43 UTC</text>
+  <text x="898" y="66" text-anchor="end" class="mono" fill="#C9D1D9" font-size="12">LAST SYNC // 2026-08-31 14:00 UTC</text>
   <line x1="62" y1="90" x2="898" y2="90" stroke="#7B2FF7" stroke-width="2"/>
   <circle class="pulse-dot" cx="77" cy="137" r="7" fill="#FFB800" filter="url(#glow)"/>
-  <text x="98" y="143" class="mono" fill="#FFB800" font-size="16" font-weight="700">IDLE // 77D AGO</text>
+  <text x="98" y="143" class="mono" fill="#FFB800" font-size="16" font-weight="700">IDLE // 78D AGO</text>
   <text x="70" y="196" class="display" fill="#FFFFFF" font-size="38">ARENA-SURVIVOR</text>
   <text x="898" y="195" text-anchor="end" class="mono" fill="#FFB800" font-size="15">LOADOUT // UNITY</text>
 
