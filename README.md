@@ -1,189 +1,110 @@
-<!--
-  KAUSTUV // PLAYER PROFILE OS
-  Public presentation lives here. Editable profile data lives in profile/.
-  NPC_MIRA: companion connection stable // morale +1
--->
-
 <div align="center">
 
-<img src="./assets/generated/hero.svg" width="100%" alt="Kaustuv Mohapatra — Player 1 Ready; game developer, AI engineer, and interactive systems developer" />
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="./assets/hero/aurora-light.svg" />
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/hero/aurora-dark.svg" />
+  <img src="./assets/hero/aurora-dark.svg" width="100%" alt="Kaustuv Mohapatra — Game developer, AI engineer and creative technologist"/>
+</picture>
 
-<a href="https://kaustuvm.itch.io/"><img src="https://img.shields.io/badge/PLAY_MY_GAMES-FF2E97?style=for-the-badge&logo=itchdotio&logoColor=white" alt="Play Kaustuv's games on itch.io" /></a>
-<a href="https://kaustuvmohapatra.github.io/ResumeSite/"><img src="https://img.shields.io/badge/VIEW_PORTFOLIO-00F0FF?style=for-the-badge&logo=googlechrome&logoColor=0D0221" alt="View Kaustuv's portfolio" /></a>
-<a href="https://github.com/KaustuvMohapatra?tab=repositories"><img src="https://img.shields.io/badge/VIEW_CODE-7B2FF7?style=for-the-badge&logo=github&logoColor=white" alt="Browse Kaustuv's repositories" /></a>
-<a href="https://www.linkedin.com/in/kaustuv-mohapatra-b0538428b/"><img src="https://img.shields.io/badge/CONNECT-FFB800?style=for-the-badge&logo=linkedin&logoColor=0D0221" alt="Connect with Kaustuv on LinkedIn" /></a>
+**Game Developer · AI/ML Engineer · Creative Technologist**
 
-<br />
-
-[![Profile CI status](https://img.shields.io/github/actions/workflow/status/KaustuvMohapatra/KaustuvMohapatra/profile-ci.yml?branch=main&style=flat-square&label=PROFILE%20CI&color=00F0FF)](https://github.com/KaustuvMohapatra/KaustuvMohapatra/actions/workflows/profile-ci.yml)
-[![Player Save status](https://img.shields.io/github/actions/workflow/status/KaustuvMohapatra/KaustuvMohapatra/profile.yml?branch=main&style=flat-square&label=PLAYER%20SAVE&color=39FF14)](https://github.com/KaustuvMohapatra/KaustuvMohapatra/actions/workflows/profile.yml)
+[**Portfolio ↗**](https://kaustuvmohapatra.github.io/ResumeSite/) &nbsp;·&nbsp; [**Play my games ↗**](https://kaustuvm.itch.io/) &nbsp;·&nbsp; [**GitHub projects ↗**](https://github.com/KaustuvMohapatra?tab=repositories) &nbsp;·&nbsp; [**LinkedIn ↗**](https://www.linkedin.com/in/kaustuv-mohapatra-b0538428b/)
 
 </div>
 
-## PLAYER PROFILE // SAVE IDENTITY
+## Hello, I'm Kaustuv 👋
 
-<!-- PLAYER_OS:PLAYER_PROFILE:START -->
-```yaml
-PLAYER:    Kaustuv Mohapatra
-HANDLE:    zeusmonsterx
-CLASS:     Game Developer + AI Engineer
-BUILD:     Interactive Systems
-FOCUS:
-  - Gameplay Systems
-  - Generative AI
-  - Multiplayer
-  - Interactive Web
-STATUS:    READY
-```
-<!-- PLAYER_OS:PLAYER_PROFILE:END -->
+<table>
+<tr><td width="38%" valign="top">
+<img src="./assets/portrait/ascii-portrait.svg" width="100%" alt="Animated ASCII portrait of Kaustuv based on his photograph"/>
+</td><td width="62%" valign="top">
 
-## MISSION LOG // BUILD PHILOSOPHY
+I'm a **Computer Science undergraduate at VIT Vellore**, combining **game development, applied AI and interactive software**.
 
-> I build interactive worlds where game development and AI meet.<br />
-> Mechanics, feedback, and responsiveness are part of the engineering.<br />
-> I like systems that feel alive, from gameplay loops to AI-enhanced tools.<br />
-> The rule behind every build is simple: **game feel matters**.
+I work on autonomous simulation systems, playable games and creative AI tools—from residents who remember and form relationships to responsive gameplay mechanics and tools that speed up prototyping.
 
-## PLAYER SAVE // LIVE TELEMETRY
+What connects these projects is my interest in the space between **technical depth and experiences that feel good to use**.
 
-<img src="./assets/generated/player-save.svg" width="100%" alt="Player Save showing Kaustuv's evidence-backed public GitHub activity and playful profile level" />
+**Interested in:** gameplay programming · AI agents · emergent simulations · human-centered interfaces · creative tooling.
 
-`PLAYER XP` is a playful profile metric, not an official GitHub score:
+</td></tr>
+</table>
 
-```text
-XP = public source repos × 100
-   + public commits in the last 30 days × 5
-   + published GitHub releases × 150
-   + stars received × 20
+## Selected work
 
-LEVEL = floor(XP / 1000) + 1
-```
+My favorite projects involve both engineering challenges and interaction design. Click any illustration for the source code.
 
-## WORLD SELECT // FEATURED BUILDS
+<table>
+<tr><td width="44%" valign="middle">
+<a href="https://github.com/KaustuvMohapatra/EchosSim"><img src="./assets/projects/echosim.svg" width="100%" alt="Illustrated technical diagram showing EchoSim's needs, goals, actions, memory, beliefs and social systems"/></a>
+</td><td valign="middle">
+<h3><a href="https://github.com/KaustuvMohapatra/EchosSim">EchoSim ↗</a></h3>
+<p><strong>Autonomous social simulation · TypeScript · Babylon.js · Phaser</strong></p>
+<p>An engine-independent simulation where residents pursue goals, remember experiences, revise beliefs, and develop relationships. Includes explainable planning and multiple interactive clients.</p>
+<p><a href="https://github.com/KaustuvMohapatra/EchosSim">Architecture &amp; code →</a></p>
+</td></tr>
+<tr><td width="44%" valign="middle">
+<a href="https://github.com/KaustuvMohapatra/Arena-Survivor"><img src="./assets/projects/arena-survivor.svg" width="100%" alt="Illustration of Arena Survivor's top-down wave combat and upgrade loop"/></a>
+</td><td valign="middle">
+<h3><a href="https://github.com/KaustuvMohapatra/Arena-Survivor">Arena Survivor ↗</a></h3>
+<p><strong>Unity · C# · ShaderLab · WebGL</strong></p>
+<p>A playable survival arena centered on combat feedback, enemy waves, automatic weapons, upgrades, and progression.</p>
+<p><a href="https://kaustuvm.itch.io/arena-survivor">Play in browser →</a> · <a href="https://github.com/KaustuvMohapatra/Arena-Survivor">Source →</a></p>
+</td></tr>
+<tr><td width="44%" valign="middle">
+<a href="https://github.com/KaustuvMohapatra/AI-Game-Asset-Maker"><img src="./assets/projects/ai-game-asset-maker.svg" width="100%" alt="Illustrated AI Game Asset Maker pipeline from prompt through generation to a game prototype"/></a>
+</td><td valign="middle">
+<h3><a href="https://github.com/KaustuvMohapatra/AI-Game-Asset-Maker">AI Game Asset Maker ↗</a></h3>
+<p><strong>Generative AI · Python · FastAPI · Electron · Pygame</strong></p>
+<p>An experiment in closing the gap between text prompts and usable game assets, connecting generation, processing, and prototype assembly.</p>
+<p><a href="https://github.com/KaustuvMohapatra/AI-Game-Asset-Maker">Architecture &amp; code →</a></p>
+</td></tr>
+</table>
 
-<img src="./assets/generated/world-select.svg" width="100%" alt="World Select featuring Arena Survivor, AI Game Asset Maker, TypeMaker, and MedLingo" />
+<sub>Project visuals are original illustrative diagrams of their engineering concepts, not captured gameplay screenshots.</sub>
 
-<!-- PLAYER_OS:WORLD_LINKS:START -->
-**WORLD 01 // ARENA SURVIVOR** — Survive the loop. Read the arena. Build the run.<br />
-[SOURCE](https://github.com/KaustuvMohapatra/Arena-Survivor) · [ENTER WORLD](https://kaustuvm.itch.io/arena-survivor)
+### More things I've built
 
-**WORLD 02 // AI GAME ASSET MAKER** — Prompt to generated asset to playable game loop.<br />
-[SOURCE](https://github.com/KaustuvMohapatra/AI-Game-Asset-Maker)
+| Project | Focus | Explore |
+| :--- | :--- | :--- |
+| **[TypeMaker](https://github.com/KaustuvMohapatra/typemaker)** | Typing competition, WPM analytics, and generated prompts | [Live app](https://typemaker-pro.vercel.app/) |
+| **[MedLingo](https://github.com/KaustuvMohapatra/MedLingo)** | Gamified revision and spaced repetition | [Live app](https://medlingo-pied.vercel.app/) |
+| **[AlexAI](https://github.com/KaustuvMohapatra/AlexAI)** | Conversational AI assistant | [Repository](https://github.com/KaustuvMohapatra/AlexAI) |
 
-**WORLD 03 // TYPEMAKER** — Competitive typing with live feedback and generated prompts.<br />
-[SOURCE](https://github.com/KaustuvMohapatra/typemaker) · [ENTER WORLD](https://typemaker-pro.vercel.app/)
+## Technologies & creative tools
 
-**WORLD 04 // MEDLINGO** — Medical revision re-engineered as a game loop.<br />
-[SOURCE](https://github.com/KaustuvMohapatra/MedLingo) · [ENTER WORLD](https://medlingo-pied.vercel.app/)
-<!-- PLAYER_OS:WORLD_LINKS:END -->
+**Game development & interactive graphics**
 
-## LIVE SYSTEM // PLAYER ACTIVITY
+<img src="https://skillicons.dev/icons?i=unity,godot,cs,threejs,blender&theme=dark&perline=10" alt="Unity, Godot, C sharp, Three.js and Blender" />
 
-<img src="./assets/generated/now-playing.svg" width="100%" alt="Now Playing showing the latest meaningful public repository signal and timestamp-derived activity state" />
+<sub>Also: Phaser · ShaderLab · Gameplay architecture · WebGL</sub>
 
-<img src="./assets/generated/live-feed.svg" width="100%" alt="Live Feed showing recent public pushes, recently played repositories, activity score, and verified project states" />
+**Artificial intelligence & data**
 
-<img src="./assets/generated/activity-radar.svg" width="100%" alt="Activity Radar plotting public commits, pushes, merged pull requests, and releases from the last fourteen days" />
+<img src="https://skillicons.dev/icons?i=py,pytorch,tensorflow,opencv,postgres&theme=dark&perline=10" alt="Python, PyTorch, TensorFlow, OpenCV and PostgreSQL" />
 
-<img src="./assets/generated/release-radar.svg" width="100%" alt="Release Radar showing the latest factual public GitHub release or an explicit no-release state" />
+<sub>Also: Generative AI · Agent planning · Pandas · NumPy · SQL</sub>
 
-Live signals exclude this profile repository, bot activity, dependency bumps, and formatting-only noise. Activity states describe timestamp recency—not whether I am online right now.
+**Web, backend & developer tools**
 
-## CURRENT QUEST // NOW LOADING
+<img src="https://skillicons.dev/icons?i=react,ts,js,nextjs,vite,tailwind,fastapi,flask,nodejs,supabase,docker,git,github,figma&theme=dark&perline=10" alt="React, TypeScript, JavaScript, Next.js, Vite, Tailwind, FastAPI, Flask, Node.js, Supabase, Docker, Git, GitHub and Figma" />
 
-<!-- PLAYER_OS:CURRENT_QUESTS:START -->
-**ACTIVE QUESTS**
+<sub>Also: REST APIs · CI/CD · Automated testing · Krita · Aseprite</sub>
 
-- Multiplayer game systems and real-time state
-- Generative AI pipelines for games
-- Interactive simulations and playable web experiences
+## Beyond the code
 
-<details>
-<summary>SIDE QUESTS // OPTIONAL OBJECTIVES</summary>
+- 🎓 **VIT Vellore** — B.Tech in Computer Science and Engineering.
+- 🛠️ **TAG Club at VIT** — Senior Core Technical Department Head, contributing to technical development and collaboration.
+- 🎮 **Creative engineering** — Interested in gameplay programming, AI-driven worlds and playful, useful digital experiences.
 
-- Procedural art and Blender experiments
-- ML and data-engineering deep dives
-- Small arcade builds that sharpen game feel
-
-</details>
-<!-- PLAYER_OS:CURRENT_QUESTS:END -->
-
-## DEV DNA // CURRENT BUILD
-
-<img src="./assets/generated/dev-dna.svg" width="100%" alt="Dev DNA positioning map for Kaustuv's current engineering focus" />
-
-These values describe the build I am deliberately developing toward. They are editable positioning signals—not pretend precision from GitHub data.
-
-## TECH TREE // LOADOUT
-
-<!-- PLAYER_OS:TECH_TREE:START -->
-**GAME SYSTEMS**<br />
-`Unity` · `C#` · `ShaderLab` · `Phaser` · `Three.js` · `Gameplay Architecture`
-
-**AI / ML**<br />
-`Python` · `PyTorch` · `TensorFlow` · `OpenCV` · `Generative AI` · `Data Pipelines`
-
-**SYSTEMS / BACKEND**<br />
-`FastAPI` · `Flask` · `Node.js` · `REST` · `SQL` · `Docker`
-
-**FRONTEND / INTERACTIVE WEB**<br />
-`React` · `TypeScript` · `JavaScript` · `Vite` · `Three.js`
-
-**CREATIVE TOOLKIT**<br />
-`Blender` · `Figma` · `Git` · `GitHub`
-<!-- PLAYER_OS:TECH_TREE:END -->
-
-## SHIP LOG // RECENT PATCHES
-
-<img src="./assets/generated/ship-log.svg" width="100%" alt="Ship Log listing factual recent public GitHub commits, pushes, releases, and merged pull requests" />
-
-Generated daily from public GitHub activity. No commit summaries or release claims are invented.
-
-## ACHIEVEMENTS UNLOCKED // VERIFIED
-
-<!-- PLAYER_OS:ACHIEVEMENTS:START -->
-- **[PLAYABLE BUILD LIVE](https://kaustuvm.itch.io/arena-survivor)** — Arena Survivor is playable in the browser on itch.io.
-- **[AI PIPELINE ONLINE](https://github.com/KaustuvMohapatra/AI-Game-Asset-Maker)** — AI Game Asset Maker connects generated assets to a playable Pygame loop.
-- **[INTERACTIVE SYSTEM SHIPPED](https://typemaker-pro.vercel.app/)** — TypeMaker has a public competitive typing build.
-- **[OPEN-SOURCE GAME SYSTEM](https://github.com/KaustuvMohapatra/Arena-Survivor)** — Arena Survivor publishes its Unity gameplay project and WebGL build.
-<!-- PLAYER_OS:ACHIEVEMENTS:END -->
-
-## CONTRIBUTION SYSTEM // SNAKE RUN
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/generated/github-snake-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="./assets/generated/github-snake.svg" />
-  <img src="./assets/generated/github-snake-dark.svg" width="100%" alt="Contribution snake moving through Kaustuv's GitHub contribution grid" />
-</picture>
-
-<details>
-<summary>🔒 SECRET ROOM // KEY REQUIRED</summary>
-
-```text
-SECRET ROOM UNLOCKED.
-
-ACHIEVEMENT:
-"Made the README itself into a side project."
-
-NPC_MIRA_CONNECTED // MORALE +1 🛐
-```
-
-</details>
-
-## GAME OVER? // CONTINUE
+## Let's make something interesting
 
 <div align="center">
 
-**MAKE IT FEEL LIKE A GAME. MAKE IT UNFORGETTABLE.**
+Whether you're working on a game, an AI application, or an ambitious interactive experience, I'd love to connect.
 
-<a href="https://kaustuvm.itch.io/"><img src="https://img.shields.io/badge/PLAY-FF2E97?style=for-the-badge&logo=itchdotio&logoColor=white" alt="Play Kaustuv's games" /></a>
-<a href="https://kaustuvmohapatra.github.io/ResumeSite/"><img src="https://img.shields.io/badge/PORTFOLIO-00F0FF?style=for-the-badge&logo=googlechrome&logoColor=0D0221" alt="Open Kaustuv's portfolio" /></a>
-<a href="https://github.com/KaustuvMohapatra"><img src="https://img.shields.io/badge/GITHUB-7B2FF7?style=for-the-badge&logo=github&logoColor=white" alt="Open Kaustuv's GitHub profile" /></a>
-<a href="https://www.linkedin.com/in/kaustuv-mohapatra-b0538428b/"><img src="https://img.shields.io/badge/LINKEDIN-FFB800?style=for-the-badge&logo=linkedin&logoColor=0D0221" alt="Connect with Kaustuv on LinkedIn" /></a>
-<a href="mailto:kaustuv4@outlook.com"><img src="https://img.shields.io/badge/EMAIL-39FF14?style=for-the-badge&logo=microsoftoutlook&logoColor=0D0221" alt="Email Kaustuv" /></a>
+[**Portfolio**](https://kaustuvmohapatra.github.io/ResumeSite/) · [**Playable games**](https://kaustuvm.itch.io/) · [**GitHub**](https://github.com/KaustuvMohapatra) · [**LinkedIn**](https://www.linkedin.com/in/kaustuv-mohapatra-b0538428b/) · [**Email**](mailto:kaustuv4@outlook.com)
 
-<br /><br />
-
-`PRESS START TO CONNECT // PLAYER 1 READY`
+<sub>Built with original SVG artwork, simple HTML/Markdown, and a genuine interest in creative software.</sub>
 
 </div>
