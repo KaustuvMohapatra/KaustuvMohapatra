@@ -85,6 +85,8 @@ My favorite projects involve both engineering challenges and interaction design.
 
 <sub>Also: Generative AI · Agent planning · Pandas · NumPy · SQL</sub>
 
+<p><img src="./assets/icons/numpy.svg" width="39" height="39" alt="NumPy logo" />&nbsp; <img src="./assets/icons/pandas.svg" width="39" height="39" alt="Pandas logo" />&nbsp; <img src="./assets/icons/scikitlearn.svg" width="39" height="39" alt="scikit-learn logo" /></p>
+
 **Web, backend & developer tools**
 
 <img src="https://skillicons.dev/icons?i=react,ts,js,nextjs,vite,tailwind,fastapi,flask,nodejs,supabase,docker,git,github,figma&theme=dark&perline=10" alt="React, TypeScript, JavaScript, Next.js, Vite, Tailwind, FastAPI, Flask, Node.js, Supabase, Docker, Git, GitHub and Figma" />

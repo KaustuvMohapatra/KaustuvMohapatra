@@ -38,7 +38,7 @@ def validate():
     for ref in re.findall(r'(?:src|srcset)="([^"]+)"', readme):
         if ref.startswith("./") and not (ROOT / ref).is_file():
             raise ValueError("Broken local README asset: " + ref)
-    for tag in re.findall(r"<img\\b[^>]*>", readme, flags=re.S | re.I):
+    for tag in re.findall(r"<img\b[^>]*>", readme, flags=re.S | re.I):
         if "alt=" not in tag:
             raise ValueError("Image lacks alt text")
     if (ROOT / "assets/portrait/portrait-source.jpg").exists():

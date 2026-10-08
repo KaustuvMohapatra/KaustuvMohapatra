@@ -25,6 +25,6 @@ Older telemetry generator, YAML configuration, and pre-redesign tests remain as 
 
 ## Design provenance
 
-Inspired by techniques documented in [Awesome GitHub Profile](https://github.com/beydemirfurkan/awesome-github-profile) and the [animated ASCII portrait](https://github.com/AVIVASHISHTA29/AVIVASHISHTA29) design. Technology icon references: [Skill Icons](https://github.com/tandpfun/skill-icons) and [Devicon](https://devicon.dev/). Illustration SVGs here are original compositions.
+Inspired by techniques documented in [Awesome GitHub Profile](https://github.com/beydemirfurkan/awesome-github-profile) and the [animated ASCII portrait](https://github.com/AVIVASHISHTA29/AVIVASHISHTA29) design. Devicon NumPy, Pandas and scikit-learn SVGs are from [devicons/devicon](https://github.com/devicons/devicon), under the included MIT license. Technology icon references: [Skill Icons](https://github.com/tandpfun/skill-icons) and [Devicon](https://devicon.dev/). Illustration SVGs here are original compositions.
 
 For the next visual pass, replace illustrative project diagrams with real, approved screenshots captured from game builds.
