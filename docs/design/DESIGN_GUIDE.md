@@ -1,48 +1,50 @@
-# Design guide: the Candlelit Great Hall
+# Design guide: a letter from Hogwarts
 
-A Hogwarts-style student dossier, told as a feast-night spellbook. It's an unofficial fan tribute: no official crests, logos, film stills or third-party sprites are used. Every image is original pixel art (see [RESEARCH.md](RESEARCH.md)).
+An unofficial fan tribute: every section is a Hogwarts object. No official crests, logos, film stills or third-party sprites are used, and all artwork is original (see [RESEARCH.md](RESEARCH.md)).
 
 ## Page structure
-Hero (animated) → Chapter I: The Wizard's Dossier → Chapter II: Featured Creations (spellbook pages) → Chapter III: The Spellbook of Skills → Chapter IV: The Adventure Log → Finale: Send an Owl.
-Everything a visitor needs (name, roles, project names, stacks, links, contact) is real Markdown text. Images only add atmosphere, and they all have alt text.
+| Section | Object | What it carries |
+|---|---|---|
+| Hero | Moonlit castle over the lake, gilded moving portrait | Name, roles, House Slytherin, Kaustuv's likeness in Slytherin robes |
+| Buttons | Emerald-and-gold plaques with a play rune and a passing glint | Portfolio, Play games, GitHub, LinkedIn, Owl post (email) |
+| The Acceptance Letter | Hogwarts letter on parchment, green wax seal | About: studies, craft, known for, office held, interests |
+| The Restricted Section | *Daily Prophet* front pages with moving sepia photos, plus library catalogue cards | Featured projects and the archive |
+| Ordinary Wizarding Levels | O.W.L. subject cards | Skills: Transfiguration = gameplay, Divination = AI, Charms = web, Arithmancy = backend, Potions = creative tools |
+| The Marauder's Map | Animated map with walking footprints | Journey and experience |
+| Owl Post | Owl leaving the owlery | Contact, then the buttons again |
+
+Every image has full-content alt text, and the projects and map have a `<details>` plain-text version, so nothing is image-only.
 
 ## Palette (`tools/pixelart/art.py` → `P`)
 | Role | Colours |
 |---|---|
-| Charcoal / outline | `#0d0a0e` `#1a1419` `#2a2027` |
-| Warm stone | `#1e1619` → `#86644f` (5-step ramp, hue-shifted warm in highlights) |
-| Burgundy (ribbons, banners, wax) | `#3a0f18` `#6b1a28` `#93303a` · wax `#5a141e` `#8c2430` `#c4503e` |
-| Antique gold | `#7a4f18` `#b07a24` `#e0aa3e` `#fbe2a0` |
-| Enchanted ceiling | `#0b0c1a` → `#262c52` |
-| Candlelight | wax `#efe0c0` `#bfa982`, flame `#fff7d0` `#ffbf3c` `#e07a28` |
-| Parchment / ink | `#a88a58` → `#f3e6c4`, ink `#3a2414` `#7d5a38` |
-| Slytherin (on Kaustuv only) | `#124430` `#1e6b45` `#b8c0c4` |
+| Night and castle | navy night ramp, charcoal stone, warm lit windows |
+| Slytherin | emerald `em` ramp, silver `sv` |
+| Gilding | `g` gold ramp (`GOLD_RAMP` for metal lettering) |
+| Paper | parchment `parch`, newsprint `news`, sepia photo ramp `sep` |
+| Ink | `ink`, `ink2`, accent red `red`, wax |
 
-Slytherin colours appear only on the character (scarf) and his dossier. The scene uses burgundy and gold.
-
-## Pixel grid
-- Everything is drawn at 1× and exported with nearest-neighbour scaling. Hero, plates, pages and the owl export at **3×**; the dossier and skill icons at **2×**.
-- The README shows each image at exactly its exported width (or `width="100%"` for full-width art) so pixels stay square. The validator enforces this.
-- Native sizes: hero 288×112, chapter plates 288×22, project pages 140×52, dossier 124×140, icons 16×16, owl 160×52.
-- One dither style: ordered Bayer 4×4. Light falls off with ordered dither, never alpha blending. 1 px dark outlines (`#0d0a0e`).
-- Lettering uses an original 5×7 bitmap font (`FONT` in `art.py`), so no font files are embedded.
+## Pixel grid and typography
+- Scenery, portrait, props and frames are pixel art drawn at native size and exported at **2×** (each art pixel is a 2×2 block). Native sizes: hero 416×196, banners 416×50, letter 416×222, Prophet pages 202×222, catalogue cards 134×64, subject cards 134×100, map 416×214, owl post 416×104, buttons 82×24.
+- Lettering is set at full export resolution in period display faces, so it stays readable: Old English (titles, mastheads), Castellar (engraved caps), Goudy Old Style (body), Monotype Corsiva (script), Lucida Calligraphy (map labels) and Bodoni (headlines). These are Windows/Office fonts, used only to rasterise. They are never committed.
+- The README shows images at natural width; GitHub scales them down on narrow screens.
 
 ## Animation
-- Hero: 16 frames × 110 ms, seamless loop. Candle flames flicker (each with its own phase), the ceiling stars twinkle, the spell trail flows, the winged orb hovers in a figure-eight, and a glint sweeps the gold title.
-- Owl: 8 frames × 140 ms, with a wing-flap cycle and twinkling stars.
-- Rules (enforced by tests): no frame changes more than 6% of pixels, so nothing flashes. Hero ≤ 1.5 MB, other GIFs ≤ 300 KB. Each GIF has a `-still.png` that is served to `prefers-reduced-motion` visitors through `<picture>`.
+- Hero: 12 frames × 130 ms. Window lights flicker, stars twinkle, fireflies drift, the portrait blinks.
+- Buttons: 8 × 120 ms glint sweep and pulsing play rune. Prophet photos: 8 × 160 ms. Map: 12 × 150 ms footprints. Owl: 8 × 150 ms.
+- Rules (enforced by tests): no frame changes more than 6% of pixels, so nothing flashes. Hero ≤ 1.5 MB, other GIFs ≤ 400 KB, all art ≤ 4 MB. Each GIF has a `-still.png` that is served to `prefers-reduced-motion` visitors through `<picture>`.
 
 ## Building the art
 ```sh
-python tools/pixelart/build.py                  # needs Aseprite (ASEPRITE env var or E:/Aseprite/aseprite.exe)
+python tools/pixelart/build.py                  # needs Aseprite (ASEPRITE env var or E:/Aseprite/aseprite.exe) and the fonts above
 python tools/pixelart/build.py --preview out/   # Pillow-only previews, no Aseprite
 ```
-`build.py` renders each asset's named layers and frames from `art.py`. It then runs `assemble.lua` in Aseprite to save a layered, animated `.aseprite` file to `assets/pixel-art/source/`, and finally exports the PNG and GIF files with Aseprite's CLI. To make manual edits, change the `.aseprite` file and export with Aseprite. Note that a later `build.py` run regenerates it from code.
+`build.py` renders each asset's named layers and frames from `art.py`. Animated assets are mapped onto one shared 255-colour palette so the GIF holds every colour. It then runs `assemble.lua` in Aseprite to save a layered, animated `.aseprite` file to `assets/pixel-art/source/`, and exports the PNG and GIF files with Aseprite's CLI. Set `PROFILE_FONT_DIR` if the fonts live outside `C:/Windows/Fonts`.
 
 ## Adding or replacing a featured project
-1. Draw a 54×32 vignette function in `art.py` and register it in `VIGNETTES`.
-2. Add `(key, TITLE, VOLUME, stamp-or-None)` to `PROJECT_PAGES`. The stamp `BREWING` marks work in progress.
-3. Run `build.py`, then add the page image and a `### Name` block (one-line pitch, stack, description, links) to the README.
+1. Write a sepia photo function (`_photo_<key>(cv, x, y, f)`, 120×64 native) in `art.py`.
+2. Add a dict to `PROJECTS` (`brewing=True` stamps it "Still brewing").
+3. Run `build.py`, then add the card (wrapped in `<picture>` with its still) and a `### Name` block in the plain-text `<details>` of the README.
 4. Add the name to `REQUIRED_TEXT` in `scripts/validate_portfolio.py`.
 
 ## Validation
@@ -51,4 +53,4 @@ python scripts/validate_portfolio.py            # offline: README structure, ima
 python scripts/validate_portfolio.py --links    # also checks external links
 python -m unittest discover -s tests -p 'test_portfolio.py' -v
 ```
-The tests also fail if any committed export no longer matches what `art.py` draws, so rebuild after you change the art.
+Where the fonts are installed, the tests also fail if a committed export no longer matches what `art.py` draws. CI runs on Linux without them and skips that one check.

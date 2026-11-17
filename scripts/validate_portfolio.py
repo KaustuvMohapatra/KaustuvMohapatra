@@ -12,18 +12,18 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
 ART = ROOT / "assets" / "pixel-art"
-EXPORT_DIRS = ["hero", "chapters", "projects", "icons", "animations"]
+EXPORT_DIRS = ["hero", "buttons", "sections", "about", "projects", "skills", "journey", "contact"]
 # byte budgets: GitHub documents no GIF limit, these are our own load-time budgets
 GIF_BUDGET = {"hero.gif": 1_500_000}
-DEFAULT_GIF_BUDGET = 300_000
-TOTAL_BUDGET = 3_000_000
+DEFAULT_GIF_BUDGET = 400_000
+TOTAL_BUDGET = 4_000_000
 
 REQUIRED_TEXT = [
     "Game Developer · AI/ML Engineer · Creative Technologist",
-    "## The Wizard's Dossier", "## Featured Creations", "## The Spellbook of Skills",
-    "## The Adventure Log", "## Send an Owl",
+    "The Acceptance Letter", "The Restricted Section", "Ordinary Wizarding Levels",
+    "The Marauder's Map", "Owl Post",
     "### EchoSim", "### Arena Survivor", "### RELOAD", "### Medieval Hauler",
-    "VIT Vellore", "unofficial fan tribute",
+    "VIT Vellore", "unofficial fan tribute", "<details>",
     "https://github.com/KaustuvMohapatra/EchosSim", "https://kaustuvm.itch.io/arena-survivor",
     "https://kaustuvmohapatra.github.io/ResumeSite/", "https://www.linkedin.com/in/kaustuv-mohapatra-b0538428b/",
     "mailto:kaustuv4@outlook.com",
@@ -61,8 +61,8 @@ def validate(check_links=False):
         alt = re.search(r'alt="([^"]*)"', tag)
         if alt is None:
             errors.append("Image lacks alt attribute: " + tag[:80])
-        elif alt.group(1) == "" and "/icons/" not in tag:
-            errors.append("Only heading icons may be decorative (alt=\"\"): " + tag[:80])
+        elif not alt.group(1).strip():
+            errors.append("Every image carries words or links, so none may be decorative: " + tag[:80])
         # pixel art must be shown at its exported width (or full width) so pixels stay square
         src = re.search(r'src="(\./[^"]+)"', tag)
         width = re.search(r'width="(\d+)"', tag)
@@ -108,7 +108,8 @@ def validate(check_links=False):
             errors.append("Photographs must not be committed: " + photo.relative_to(ROOT).as_posix())
 
     if check_links:
-        for url in sorted(set(re.findall(r'\((https://[^)\s]+)\)', readme))):
+        found = re.findall(r'\((https://[^)\s]+)\)|href="(https://[^"]+)"', readme)
+        for url in sorted({u for pair in found for u in pair if u}):
             if "linkedin.com" in url:
                 continue  # LinkedIn rejects automated requests
             try:
