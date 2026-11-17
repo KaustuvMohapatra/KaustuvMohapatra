@@ -17,7 +17,8 @@ v1 put pixel art around ordinary Markdown text; the owner asked for everything, 
 | Palette discipline | [Pixnote colour guide](https://pixnote.net/en/learn/color-palette), [androidarts pixel tutorial](https://www.androidarts.com/pixtut/pixelart.htm), local `pixel-art` skill (hue-shifted ramps, one dither style per piece) | Hue-shifted ramps: cool shadows and warm highlights. One Bayer 4×4 dither style throughout. |
 
 ## Originality rules
-- All artwork is drawn pixel by pixel from code or in Aseprite. No traced or imported film stills, game sprites, logos, crests or fan art.
+- The hero portrait is Kaustuv's own pixel portrait, supplied by him on 2026-11-17 to replace the drawn one; it is resampled onto the art grid at build time.
+- All other artwork is drawn pixel by pixel from code or in Aseprite. No traced or imported film stills, game sprites, logos, crests or fan art.
 - No official Hogwarts or Slytherin crest. House identity uses colour plus an original serpent-wave or serpent-"S" mark.
 - Lettering is rasterised from locally installed Windows/Office fonts (Old English, Castellar, Goudy Old Style, Monotype Corsiva, Lucida Calligraphy, Bodoni). Only the rendered images are committed, never the font files.
 - The README footer will state that this is an unofficial fan tribute with no affiliation to Warner Bros. or J.K. Rowling.

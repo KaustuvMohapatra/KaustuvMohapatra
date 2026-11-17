@@ -320,128 +320,22 @@ def serpent(cv, nx, ny, flip=False):
     cv.sprite(nx, ny, SERPENT, {'S': P['sv'][1], 's': P['sv'][3], 'K': P['k0'], 'r': P['red']}, flip=flip)
 
 
-# ---------------------------------------------------------------- Kaustuv: pixel portrait (from his reference photo)
-def portrait(f=0):
-    """64x80 native. Voluminous black curls, round thin-rimmed glasses, full short beard, broad smile,
-    medium-brown skin; Slytherin uniform: black robe with green lining, grey jumper with green/silver
-    trim, white shirt, green-and-silver striped tie."""
-    cv = Canvas(64, 80)
-    SK, HR, BD = P['skin'], P['hair'], P['beard']
-    cx = 32
-    for y in range(58, 80):  # robe
-        hw = 20 + (y - 58) * 0.62
-        for x in range(int(cx - hw), int(cx + hw) + 1):
-            u = x - cx
-            cv.p(x, y, hx('#121216') if u > hw - 3 else hx('#1a1a20') if u < -hw + 5 else hx('#25252d'))
-    for y in range(60, 80):  # lapels with green lining
-        k = (y - 60) * 0.55
-        for side in (-1, 1):
-            xl = cx + side * (9 + k)
-            cv.p(xl, y, P['em'][3]); cv.p(xl + side, y, P['em'][2])
-    for y in range(60, 80):  # grey jumper
-        half = 8 + (y - 60) * 0.55
-        for x in range(int(cx - half) + 1, int(cx + half)):
-            cv.p(x, y, hx('#545a62') if x < cx + 3 else hx('#444a52'))
-    for y in range(59, 74):  # V-neck with green/silver trim, shirt inside
-        half = max(0, 8 - (y - 59) * 0.62)
-        for x in range(int(cx - half), int(cx + half) + 1):
-            cv.p(x, y, hx('#ecebe6') if x < cx + 2 else hx('#c4c8cc'))
-        cv.p(cx - half - 1, y, P['em'][3]); cv.p(cx + half + 1, y, P['em'][3])
-        cv.p(cx - half - 2, y, P['sv'][2]); cv.p(cx + half + 2, y, P['sv'][2])
-    for y in range(57, 61):  # collar points
-        for x in range(cx - 7 + (y - 57), cx - 1): cv.p(x, y, hx('#f4f2ec'))
-        for x in range(cx + 2, cx + 8 - (y - 57)): cv.p(x, y, hx('#d4d8da'))
-    cv.rect(cx - 2, 58, cx + 2, 60, P['em'][2]); cv.p(cx - 1, 58, P['em'][3]); cv.p(cx, 59, P['sv'][2])  # knot
-    for y in range(61, 74):  # tie, diagonal Slytherin stripes
-        half = 1 + (y - 61) * 0.18
-        for x in range(int(cx - half - 0.5), int(cx + half + 0.5) + 1):
-            cv.p(x, y, P['sv'][2] if (x + y) % 5 == 0 else (P['em'][3] if x < cx + 1 else P['em'][2]))
-    for y in range(48, 60):  # neck
-        for x in range(cx - 7, cx + 8):
-            cv.p(x, y, SK[1] if x > cx + 3 or y < 52 else SK[2])
-    for (ex, s) in ((18, -1), (46, 1)):  # ears
-        for y in range(34, 43):
-            cv.p(ex, y, SK[2] if s < 0 else SK[1]); cv.p(ex - s, y, SK[3] if s < 0 else SK[2])
-        cv.p(ex, 37, SK[0]); cv.p(ex, 38, SK[0])
-    for y in range(20, 54):  # face, light from upper left
-        for x in range(18, 47):
-            dx, dy = (x - cx) / 13.0, (y - 36) / 16.5
-            if dy > 0: dx *= 1 + dy * 0.35
-            if dx * dx + dy * dy <= 1:
-                shade = 3
-                if x > cx + 6 or (x > cx + 3 and y > 44): shade = 2
-                if x > cx + 10: shade = 1
-                if x < cx - 4 and y < 40: shade = 4
-                if x < cx - 6 and 28 < y < 36: shade = 5 if cv.dither(x, y, 0.5) else 4
-                cv.p(x, y, SK[shade])
-    rnd = random.Random(3)
-    for y in range(38, 58):  # full short beard, stubble edge dithered into the cheeks
-        for x in range(16, 49):
-            if cv.g(x, y)[3] == 0 and not (y >= 52 and abs(x - cx) < 9 - (y - 52)): continue
-            dx = abs(x - cx)
-            start = 41 if dx > 8 else 43 if dx > 5 else 45
-            if y < start or (y > 53 and dx > 9 - (y - 53) * 2) or dx > 13: continue
-            if y == start and cv.dither(x, y, 0.5): continue
-            cv.p(x, y, BD[2] if rnd.random() < 0.18 else BD[1] if rnd.random() < 0.8 else BD[0])
-    for x in range(cx - 7, cx + 8):  # mustache
-        cv.p(x, 45, BD[1]); cv.p(x, 46, BD[0] if abs(x - cx) > 1 else BD[1])
-    for x in range(cx - 6, cx + 7): cv.p(x, 47, hx('#3a1a14'))  # broad smile
-    for x in range(cx - 5, cx + 6): cv.p(x, 48, hx('#f4f0e6') if abs(x - cx) < 5 else hx('#cfc8b8'))
-    for x in range(cx - 4, cx + 5): cv.p(x, 49, hx('#e2dccc') if abs(x - cx) < 4 else hx('#5a2a20'))
-    for x in range(cx - 3, cx + 4): cv.p(x, 50, hx('#4a1e18'))
-    for x in range(cx - 2, cx + 3): cv.p(x, 51, hx('#7a3c30'))
-    cv.p(cx - 7, 46, hx('#3a1a14')); cv.p(cx + 7, 46, hx('#3a1a14'))
-    for y in range(36, 43): cv.p(cx, y, SK[4] if y < 41 else SK[3])  # nose
-    for y in range(38, 43): cv.p(cx + 2, y, SK[2])
-    cv.p(cx - 2, 43, SK[1]); cv.p(cx + 2, 43, SK[0]); cv.p(cx - 1, 43, SK[2]); cv.p(cx + 1, 43, SK[2]); cv.p(cx, 42, SK[4])
-    for i in range(9):  # thick eyebrows
-        y = 30 if 1 <= i <= 7 else 31
-        for bx in (cx - 11 + i, cx + 3 + i):
-            cv.p(bx, y, HR[1]); cv.p(bx, y + 1, HR[2] if i % 2 else HR[1])
-    blink = f in (9, 10)
-    for ex in (cx - 7, cx + 7):  # smiling eyes
-        if blink:
-            for d in range(-2, 3): cv.p(ex + d, 36, hx('#1a0e0a'))
-        else:
-            for d in (-1, 0, 1): cv.p(ex + d, 34, hx('#1a0e0a'))
-            cv.p(ex - 2, 35, hx('#1a0e0a')); cv.p(ex + 2, 35, hx('#1a0e0a'))
-            cv.p(ex - 1, 35, hx('#140a08')); cv.p(ex, 35, hx('#0a0606')); cv.p(ex + 1, 35, hx('#140a08'))
-            cv.p(ex - 1, 34, hx('#f0e8d8'))
-        for d in (-1, 0, 1): cv.p(ex + d, 38, SK[4] if ex < cx else SK[3])
-    for ex in (cx - 7, cx + 7):  # round thin-rimmed glasses
-        for y in range(28, 44):
-            for x in range(ex - 7, ex + 8):
-                if 5.0 <= math.hypot(x - ex, (y - 36) * 1.05) < 6.0:
-                    cv.p(x, y, hx('#8c7a62') if y < 33 else hx('#2a201c'))
-        cv.p(ex - 3, 32, hx('#e8f0f2')); cv.p(ex - 2, 32, hx('#c8dce4')); cv.p(ex - 4, 33, hx('#c8dce4'))
-    for x in (cx - 1, cx, cx + 1): cv.p(x, 35, hx('#2a201c'))
-    cv.line(cx - 13, 35, 18, 34, hx('#2a201c')); cv.line(cx + 13, 35, 46, 34, hx('#2a201c'))
-    rnd = random.Random(11)
-    curls = []
-    for i in range(17):  # dome of curls
-        a = math.pi * (1.02 + i / 16 * 0.96)
-        curls.append((cx + 16 * math.cos(a), 25 + 17 * math.sin(a), 4.0 + rnd.random() * 1.1))
-    for i in range(12):  # inner volume
-        a = math.pi * (1.1 + i / 11 * 0.8)
-        curls.append((cx + 10 * math.cos(a), 20 + 10 * math.sin(a), 4.5))
-    curls += [(cx - 14, 28, 3.2), (cx + 15, 28, 3.2), (cx - 14, 32, 2.2), (cx + 15, 32, 2.2)]
-    curls += [(cx - 8, 22.5, 3.2), (cx - 2, 22, 3.4), (cx + 4, 22.5, 3.2), (cx + 9, 23.5, 3.0), (cx - 12, 25, 3)]
-    for (ux, uy, r) in curls:
-        for y in range(int(uy - r - 1), int(uy + r + 2)):
-            for x in range(int(ux - r - 1), int(ux + r + 2)):
-                d = math.hypot(x - ux, y - uy)
-                if d <= r:
-                    ang = math.atan2(y - uy, x - ux)
-                    c = HR[1]
-                    if d > r - 1.2 and -2.6 < ang < -0.9: c = HR[3]
-                    elif d > r - 1.0 and 0.4 < ang < 2.2: c = HR[0]
-                    elif d < r * 0.45 and (x + y) % 3 == 0: c = HR[2]
-                    cv.p(x, y, c)
-    cv.outline(hx('#050304'))
-    return cv
+# ---------------------------------------------------------------- Kaustuv: the owner's own pixel portrait
+PORTRAIT_SRC = Path(__file__).with_name('portrait-source.png')  # supplied by the owner for the profile
 
 
-# ---------------------------------------------------------------- shared scenery
+def portrait_image(w, h):
+    """The owner's portrait cropped to w:h (head and shoulders) and resampled onto the native pixel grid."""
+    with Image.open(PORTRAIT_SRC) as src:
+        src = src.convert('RGB')
+        ch = round(src.height * 0.9); cw = round(ch * w / h)
+        x0 = (src.width - cw) // 2
+        im = src.crop((x0, 0, x0 + cw, ch)).resize((w, h), Image.LANCZOS)
+    # 96 colours leaves room in the hero's shared 255-colour GIF palette for the night scene
+    return im.quantize(96, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE).convert('RGBA')
+
+
+
 def night_sky(cv, y0, y1, f, seed=5, stars=90):
     ramp_fill(cv, 0, y0, cv.nw - 1, y1, P['night'])
     rnd = random.Random(seed)
@@ -582,8 +476,9 @@ def wax_seal(cv, cx, cy, r=9):
 # ---------------------------------------------------------------- HERO
 HERO_ALT = ("Animated pixel-art banner: a gothic castle across a moonlit lake at night with flickering windows. "
             "Gilded lettering reads Kaustuv Mohapatra, Game Developer, AI/ML Engineer, Creative Technologist, "
-            "of the noble House of Slytherin. On the right, a gilded moving portrait of Kaustuv: curly black hair, "
-            "round glasses, a short beard and a broad smile, in a Slytherin robe and green-and-silver tie.")
+            "of the noble House of Slytherin. On the right, in a gilded frame, a pixel portrait of Kaustuv smiling: "
+            "curly black hair, wire-rimmed glasses and light stubble, in Slytherin robes with a green-and-silver tie "
+            "and house badge, in a candlelit castle corridor.")
 
 
 def hero():
@@ -594,7 +489,7 @@ def hero():
         with rec.step('sky'):
             night_sky(cv, 0, 140, f)
         with rec.step('moon'):
-            moon(cv, 286, 22, 9)
+            moon(cv, 238, 16, 8)
         with rec.step('castle'):
             wins = castle(cv, f)
         with rec.step('lake'):
@@ -604,29 +499,25 @@ def hero():
                 x = 30 + i * 31 + round(3 * math.sin((f + i * 2) * math.pi / 6))
                 y = 150 + (i * 7) % 30 + round(2 * math.cos((f + i) * math.pi / 6))
                 cv.p(x, y, P['em'][5] if (i + f) % 3 else P['g'][4])
-        fx0, fy0, fx1, fy1 = 316, 14, 402, 124
-        with rec.step('portrait-backdrop'):
-            ramp_fill(cv, fx0 + 7, fy0 + 7, fx1 - 7, fy1 - 7, [P['em'][2], P['em'][1], P['em'][0]])
-            for y in range(fy0 + 7, fy1 - 6):  # common-room arch behind the sitter
-                for x in range(fx0 + 7, fx1 - 6):
-                    u = abs(x - (fx0 + fx1) / 2) / 30
-                    if u < 1 and fy0 + 12 + 26 * (1 - math.sqrt(1 - u * u)) < y < fy0 + 70 and (x + y) % 2 == 0:
-                        cv.p(x, y, P['em'][3])
-            glow(cv, fx0 + 16, fy0 + 26, 8, P['g'][1], 0.5)
-            cv.p(fx0 + 16, fy0 + 26, P['g'][4]); cv.p(fx0 + 16, fy0 + 25, P['win'][3])
+        fx0, fy0, fx1, fy1 = 268, 6, 408, 176
         with rec.step('portrait'):
-            cv.paste(portrait(f), 327, fy1 - 7 - 79)
+            pw, ph = fx1 - fx0 - 13, fy1 - fy0 - 13
+            cv.im.alpha_composite(portrait_image(pw, ph).resize((pw * cv.s, ph * cv.s), Image.NEAREST),
+                                  ((fx0 + 7) * cv.s, (fy0 + 7) * cv.s))
         with rec.step('frame-gilt'):
             gilded_frame(cv, fx0, fy0, fx1, fy1)
-            serpent(cv, 352, 4)
-            cv.rect(331, 127, 387, 139, P['g'][2]); cv.rect(332, 128, 386, 138, P['g'][3])
-            cv.line(331, 127, 387, 127, P['g'][4]); cv.line(331, 139, 387, 139, P['k0']); cv.line(332, 138, 386, 138, P['g'][1])
+            cv.rect(310, 179, 366, 191, P['g'][2]); cv.rect(311, 180, 365, 190, P['g'][3])
+            cv.line(310, 179, 366, 179, P['g'][4]); cv.line(310, 191, 366, 191, P['k0']); cv.line(311, 190, 365, 190, P['g'][1])
         with rec.step('lettering'):
-            cv.metal_text(40, 116, 'Kaustuv Mohapatra', font('black', 70))
-            cv.text(44, 158, 'GAME DEVELOPER  ·  AI/ML ENGINEER  ·  CREATIVE TECHNOLOGIST', font('caps', 13),
-                    P['sv'][3], shadow=hx('#000000', 220), spacing=1.2)
-            cv.text(44, 202, 'of the noble House of Slytherin', font('script', 30), P['em'][5], shadow=hx('#000000', 220))
-            cv.text(718, 271, 'SLYTHERIN', font('caps', 13), hx('#2a1a08'), anchor='ms', spacing=2)
+            ts = 70
+            while font('black', ts).getlength('Kaustuv Mohapatra') > 470: ts -= 1
+            cv.metal_text(30, 116, 'Kaustuv Mohapatra', font('black', ts))
+            roles = 'GAME DEVELOPER  ·  AI/ML ENGINEER  ·  CREATIVE TECHNOLOGIST'
+            rs = 13
+            while font('caps', rs).getlength(roles) + 1.2 * len(roles) > 470: rs -= 1
+            cv.text(34, 156, roles, font('caps', rs), P['sv'][3], shadow=hx('#000000', 220), spacing=1.2)
+            cv.text(34, 198, 'of the noble House of Slytherin', font('script', 30), P['em'][5], shadow=hx('#000000', 220))
+            cv.text(676, 375, 'SLYTHERIN', font('caps', 13), hx('#2a1a08'), anchor='ms', spacing=2)
     return layered('hero', nw, nh, 12, 130, draw, HERO_ALT)
 
 

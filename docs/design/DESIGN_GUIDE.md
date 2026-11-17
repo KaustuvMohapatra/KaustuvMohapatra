@@ -5,7 +5,7 @@ An unofficial fan tribute: every section is a Hogwarts object. No official crest
 ## Page structure
 | Section | Object | What it carries |
 |---|---|---|
-| Hero | Moonlit castle over the lake, gilded moving portrait | Name, roles, House Slytherin, Kaustuv's likeness in Slytherin robes |
+| Hero | Moonlit castle over the lake, gilded portrait frame | Name, roles, House Slytherin, and Kaustuv's own pixel portrait in Slytherin robes (`tools/pixelart/portrait-source.png`, supplied by him) |
 | Buttons | Emerald-and-gold plaques with a play rune and a passing glint | Portfolio, Play games, GitHub, LinkedIn, Owl post (email) |
 | The Acceptance Letter | Hogwarts letter on parchment, green wax seal | About: studies, craft, known for, office held, interests |
 | The Restricted Section | *Daily Prophet* front pages with moving sepia photos, plus library catalogue cards | Featured projects and the archive |
@@ -30,7 +30,7 @@ Every image has full-content alt text, and the projects and map have a `<details
 - The README shows images at natural width; GitHub scales them down on narrow screens.
 
 ## Animation
-- Hero: 12 frames × 130 ms. Window lights flicker, stars twinkle, fireflies drift, the portrait blinks.
+- Hero: 12 frames × 130 ms. Window lights flicker, stars twinkle, fireflies drift. The portrait is static.
 - Buttons: 8 × 120 ms glint sweep and pulsing play rune. Prophet photos: 8 × 160 ms. Map: 12 × 150 ms footprints. Owl: 8 × 150 ms.
 - Rules (enforced by tests): no frame changes more than 6% of pixels, so nothing flashes. Hero ≤ 1.5 MB, other GIFs ≤ 400 KB, all art ≤ 4 MB. Each GIF has a `-still.png` that is served to `prefers-reduced-motion` visitors through `<picture>`.
 

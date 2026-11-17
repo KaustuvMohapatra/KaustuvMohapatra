@@ -29,3 +29,11 @@ already makes obvious.
 - **Alternatives rejected.** PR workflow (owner chose a direct push to `main` after approval).
 - **Consequences.** New projects need an owner-confirmed description and link before they're added.
 - **Supersedes.** None.
+
+## D4 — The hero uses the owner's own portrait image
+- **Date.** 2026-11-17
+- **Decision.** The hero frame shows the pixel portrait the owner supplied, committed as `tools/pixelart/portrait-source.png` (418 px PNG) and resampled to the frame's native size by `portrait_image()` in `art.py`. The code-drawn portrait was deleted.
+- **Reason.** The owner judged the drawn likeness poor and asked for his image instead.
+- **Alternatives rejected.** Keeping or redrawing the code-drawn portrait.
+- **Consequences.** The portrait doesn't animate. The image contains a Slytherin-style crest, which the owner accepted; the footer disclaimer still states that the profile is unofficial. To change the likeness, replace the PNG and rebuild.
+- **Supersedes.** The drawn-portrait part of D1. D3's "photo never committed" rule still applies to real photographs.

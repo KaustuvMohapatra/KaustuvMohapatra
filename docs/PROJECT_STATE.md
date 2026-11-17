@@ -16,6 +16,7 @@ v2 "Hogwarts objects" redesign: shipped and live.
 - Full-content alt text on every image, `-still.png` reduced-motion fallbacks, `<details>` plain-text versions of projects and journey.
 - Aseprite pipeline: `tools/pixelart/build.py` → layered `.aseprite` sources in `assets/pixel-art/source/` + PNG/GIF exports.
 - Validator, tests, design docs and preview images updated for v2.
+- Hero portrait replaced with the owner's own pixel portrait (D4).
 
 ## In progress
 - Nothing.

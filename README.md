@@ -2,7 +2,7 @@
 
 <picture>
   <source media="(prefers-reduced-motion: reduce)" srcset="./assets/pixel-art/hero/hero-still.png" />
-  <img src="./assets/pixel-art/hero/hero.gif" alt="Kaustuv Mohapatra. Game Developer · AI/ML Engineer · Creative Technologist, of the noble House of Slytherin. A moonlit castle stands above a lake, and a gilded moving portrait shows Kaustuv with curly black hair, round glasses and a short beard, wearing Slytherin school robes." />
+  <img src="./assets/pixel-art/hero/hero.gif" alt="Kaustuv Mohapatra. Game Developer · AI/ML Engineer · Creative Technologist, of the noble House of Slytherin. A moonlit castle stands above a lake, and a gilded frame holds a pixel portrait of Kaustuv smiling, with curly black hair, wire-rimmed glasses and light stubble, in Slytherin robes and a green-and-silver tie." />
 </picture>
 
 <a href="https://kaustuvmohapatra.github.io/ResumeSite/"><picture><source media="(prefers-reduced-motion: reduce)" srcset="./assets/pixel-art/buttons/button-portfolio-still.png" /><img src="./assets/pixel-art/buttons/button-portfolio.gif" alt="Portfolio" /></picture></a>
