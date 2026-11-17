@@ -1,30 +1,23 @@
-# Creative Portfolio — GitHub Profile
+# Pixel-art GitHub profile
 
 This repository powers [Kaustuv's public profile](https://github.com/KaustuvMohapatra).
 
 ## Structure
+- `README.md`: the profile. Plain Markdown and GitHub-supported HTML only, with no scripts or CSS.
+- `assets/pixel-art/`: exported art (`hero/`, `chapters/`, `projects/`, `icons/`, `animations/`) and the editable Aseprite files (`source/`).
+- `tools/pixelart/`: `art.py` draws every asset, `build.py` builds the sources and exports through Aseprite, and `assemble.lua` is the Aseprite script.
+- `scripts/validate_portfolio.py` and `tests/test_portfolio.py`: preflight checks.
+- `.github/workflows/profile-ci.yml`: read-only validation on pull requests and pushes to `main`. It has no schedule and makes no API calls.
+- `docs/design/`: the design guide, the research and provenance notes, and the concept boards.
 
-- `README.md`: curated, accessible public profile.
-- `assets/hero/`: animated light/dark editorial aurora banners.
-- `assets/portrait/`: text-only ASCII SVG derived from a user-supplied photo. **Do not commit the original photo.**
-- `assets/projects/`: conceptual original project illustrations; not actual screenshots.
-- `scripts/validate_portfolio.py`: preflight checks.
-- `tests/test_portfolio.py`: validation tests.
-- `.github/workflows/profile-ci.yml`: read-only profile validation.
-
-## Editing
-
-Edit the README and the SVG files directly. Validate with:
-
+## Validate locally
 ```sh
+pip install -r requirements.txt
 python scripts/validate_portfolio.py
 python -m unittest discover -s tests -p 'test_portfolio.py' -v
 ```
 
-Older telemetry generator, YAML configuration, and pre-redesign tests remain as legacy development history, but are not scheduled to run or required to render the profile. The new curated README is intentionally not overwritten by GitHub telemetry.
+## Nothing overwrites the README
+The old "Player Profile OS" generator, its telemetry scripts and their scheduled workflows were removed in the pixel-art redesign; they remain in Git history. No workflow writes to this repository. The README changes only when someone edits it.
 
-## Design provenance
-
-Inspired by techniques documented in [Awesome GitHub Profile](https://github.com/beydemirfurkan/awesome-github-profile) and the [animated ASCII portrait](https://github.com/AVIVASHISHTA29/AVIVASHISHTA29) design. Devicon NumPy, Pandas and scikit-learn SVGs are from [devicons/devicon](https://github.com/devicons/devicon), under the included MIT license. Technology icon references: [Skill Icons](https://github.com/tandpfun/skill-icons) and [Devicon](https://devicon.dev/). Illustration SVGs here are original compositions.
-
-For the next visual pass, replace illustrative project diagrams with real, approved screenshots captured from game builds.
+See [docs/design/DESIGN_GUIDE.md](docs/design/DESIGN_GUIDE.md) for the palette, grid, animation rules and how to add a project.

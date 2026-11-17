@@ -1,112 +1,118 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="./assets/hero/aurora-light.svg" />
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/hero/aurora-dark.svg" />
-  <img src="./assets/hero/aurora-dark.svg" width="100%" alt="Kaustuv Mohapatra — Game developer, AI engineer and creative technologist"/>
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/pixel-art/hero/hero-still.png" />
+  <img src="./assets/pixel-art/hero/hero.gif" alt="Pixel-art banner: Kaustuv Mohapatra, in a green-and-silver scarf, stands in the doorway of a candlelit great hall and casts a golden spell beneath his name." />
 </picture>
 
 **Game Developer · AI/ML Engineer · Creative Technologist**
 
-[**Portfolio ↗**](https://kaustuvmohapatra.github.io/ResumeSite/) &nbsp;·&nbsp; [**Play my games ↗**](https://kaustuvm.itch.io/) &nbsp;·&nbsp; [**GitHub projects ↗**](https://github.com/KaustuvMohapatra?tab=repositories) &nbsp;·&nbsp; [**LinkedIn ↗**](https://www.linkedin.com/in/kaustuv-mohapatra-b0538428b/)
+*Sorted into Slytherin. I build games, AI systems and interactive worlds.*
+
+[**Portfolio ↗**](https://kaustuvmohapatra.github.io/ResumeSite/) &nbsp;·&nbsp; [**Play my games ↗**](https://kaustuvm.itch.io/) &nbsp;·&nbsp; [**Repositories ↗**](https://github.com/KaustuvMohapatra?tab=repositories) &nbsp;·&nbsp; [**LinkedIn ↗**](https://www.linkedin.com/in/kaustuv-mohapatra-b0538428b/)
 
 </div>
 
-## Hello, I'm Kaustuv 👋
+<img src="./assets/pixel-art/chapters/chapter-1.png" alt="Chapter I" />
 
-<table>
-<tr><td width="38%" valign="top">
-<img src="./assets/portrait/ascii-portrait.svg" width="100%" alt="Animated ASCII portrait of Kaustuv based on his photograph"/>
-</td><td width="62%" valign="top">
+## The Wizard's Dossier
 
-I'm a **Computer Science undergraduate at VIT Vellore**, combining **game development, applied AI and interactive software**.
+<p align="center"><img src="./assets/pixel-art/chapters/dossier.png" width="248" alt="Pixel-art student dossier: a portrait of Kaustuv with wavy black hair, glasses and a Slytherin scarf, a wax seal, and the fields House Slytherin, Studies B.Tech CSE, Craft Games and AI." /></p>
 
-I work on autonomous simulation systems, playable games and creative AI tools—from residents who remember and form relationships to responsive gameplay mechanics and tools that speed up prototyping.
+I'm a **Computer Science undergraduate at VIT Vellore**, working where **game development, applied AI and interactive software** meet.
 
-What connects these projects is my interest in the space between **technical depth and experiences that feel good to use**.
+I build autonomous simulations, playable games and creative AI tools: residents who remember and form relationships, combat that feels responsive, and pipelines that turn a prompt into something playable. What connects them is the space between **technical depth and experiences that feel good to use**.
 
-**Interested in:** gameplay programming · AI agents · emergent simulations · human-centered interfaces · creative tooling.
+**Interested in:** gameplay programming · AI agents · emergent simulation · human-centred interfaces · creative tooling.
 
-</td></tr>
-</table>
+<img src="./assets/pixel-art/chapters/chapter-2.png" alt="Chapter II" />
 
-## Selected work
+## Featured Creations
 
-My favorite projects involve both engineering challenges and interaction design. Click any illustration for the source code.
+<p align="center"><a href="https://github.com/KaustuvMohapatra/EchosSim"><img src="./assets/pixel-art/projects/page-echosim.png" width="420" alt="Spellbook page, Volume I: EchoSim, illustrated with a night-time village whose residents have thought bubbles." /></a></p>
 
-<table>
-<tr><td width="44%" valign="middle">
-<a href="https://github.com/KaustuvMohapatra/EchosSim"><img src="./assets/projects/echosim.svg" width="100%" alt="Illustrated technical diagram showing EchoSim's needs, goals, actions, memory, beliefs and social systems"/></a>
-</td><td valign="middle">
-<h3><a href="https://github.com/KaustuvMohapatra/EchosSim">EchoSim ↗</a></h3>
-<p><strong>Autonomous social simulation · TypeScript · Babylon.js · Phaser</strong></p>
-<p>An engine-independent simulation where residents pursue goals, remember experiences, revise beliefs, and develop relationships. Includes explainable planning and multiple interactive clients.</p>
-<p><a href="https://github.com/KaustuvMohapatra/EchosSim">Architecture &amp; code →</a></p>
-</td></tr>
-<tr><td width="44%" valign="middle">
-<a href="https://github.com/KaustuvMohapatra/Arena-Survivor"><img src="./assets/projects/arena-survivor.svg" width="100%" alt="Illustration of Arena Survivor's top-down wave combat and upgrade loop"/></a>
-</td><td valign="middle">
-<h3><a href="https://github.com/KaustuvMohapatra/Arena-Survivor">Arena Survivor ↗</a></h3>
-<p><strong>Unity · C# · ShaderLab · WebGL</strong></p>
-<p>A playable survival arena centered on combat feedback, enemy waves, automatic weapons, upgrades, and progression.</p>
-<p><a href="https://kaustuvm.itch.io/arena-survivor">Play in browser →</a> · <a href="https://github.com/KaustuvMohapatra/Arena-Survivor">Source →</a></p>
-</td></tr>
-<tr><td width="44%" valign="middle">
-<a href="https://github.com/KaustuvMohapatra/AI-Game-Asset-Maker"><img src="./assets/projects/ai-game-asset-maker.svg" width="100%" alt="Illustrated AI Game Asset Maker pipeline from prompt through generation to a game prototype"/></a>
-</td><td valign="middle">
-<h3><a href="https://github.com/KaustuvMohapatra/AI-Game-Asset-Maker">AI Game Asset Maker ↗</a></h3>
-<p><strong>Generative AI · Python · FastAPI · Electron · Pygame</strong></p>
-<p>An experiment in closing the gap between text prompts and usable game assets, connecting generation, processing, and prototype assembly.</p>
-<p><a href="https://github.com/KaustuvMohapatra/AI-Game-Asset-Maker">Architecture &amp; code →</a></p>
-</td></tr>
-</table>
+### EchoSim
+**Autonomous social simulation** · TypeScript · Babylon.js · Phaser
 
-<sub>Project visuals are original illustrative diagrams of their engineering concepts, not captured gameplay screenshots.</sub>
+An engine-independent simulation where residents pursue goals, remember experiences, revise beliefs and form relationships. Needs, utility scoring, GOAP planning, perception and memory drive behaviour; the simulation runs headless and the browser clients only read from it.
+[**Source & architecture →**](https://github.com/KaustuvMohapatra/EchosSim)
 
-### More things I've built
+<p align="center"><a href="https://kaustuvm.itch.io/arena-survivor"><img src="./assets/pixel-art/projects/page-arena-survivor.png" width="420" alt="Spellbook page, Volume II: Arena Survivor, illustrated with a top-down arena, a ring of enemies, XP gems and an XP bar." /></a></p>
 
-| Project | Focus | Explore |
+### Arena Survivor
+**Survival arena** · Unity · C# · ShaderLab · WebGL
+
+A playable arena built around enemy waves, automatic weapons, XP progression, level-ups and shader work, with a WebGL build you can play in the browser.
+[**Play in browser →**](https://kaustuvm.itch.io/arena-survivor) &nbsp;·&nbsp; [**Source →**](https://github.com/KaustuvMohapatra/Arena-Survivor)
+
+<p align="center"><img src="./assets/pixel-art/projects/page-reload.png" width="420" alt="Spellbook page, Volume III: RELOAD, marked Brewing, illustrated with a desert compound, a crate and a pistol whose magazine is dropping out." /></p>
+
+### RELOAD &nbsp;<sub>in development</sub>
+**First-person arcade shooter for desktop and phone** · TypeScript · Babylon.js · Vite
+
+A browser shooter about reloading by hand under pressure: you drop the magazine, seat the next one and rack the slide yourself while enemies close in. It has a three-facility campaign, Time Attack, Endless and daily challenge modes, and S–D run rankings. Every weapon, enemy and level is built in code.
+<sub>The repository isn't public yet.</sub>
+
+<p align="center"><img src="./assets/pixel-art/projects/page-medieval-hauler.png" width="420" alt="Spellbook page, Volume IV: Medieval Hauler, marked Brewing, illustrated with a horse pulling a loaded cart over green hills." /></p>
+
+### Medieval Hauler &nbsp;<sub>in development</sub>
+**Physics driving game** · Phaser 4 · TypeScript · Matter.js · Capacitor
+
+A horse pulls a loaded cart over rolling hills, and the cargo is only as safe as your throttle control. It has twelve roads, star ratings and saved progress, and is built for the browser and Android.
+<sub>The repository isn't public yet.</sub>
+
+#### From the archive
+
+| Project | What it is | Explore |
 | :--- | :--- | :--- |
-| **[TypeMaker](https://github.com/KaustuvMohapatra/typemaker)** | Typing competition, WPM analytics, and generated prompts | [Live app](https://typemaker-pro.vercel.app/) |
-| **[MedLingo](https://github.com/KaustuvMohapatra/MedLingo)** | Gamified revision and spaced repetition | [Live app](https://medlingo-pied.vercel.app/) |
-| **[AlexAI](https://github.com/KaustuvMohapatra/AlexAI)** | Conversational AI assistant | [Repository](https://github.com/KaustuvMohapatra/AlexAI) |
+| **AI Game Asset Maker** | Prompt → generated asset → playable Pygame loop (Python · FastAPI · Electron) | [Source](https://github.com/KaustuvMohapatra/AI-Game-Asset-Maker) |
+| **MedLingo** | Gamified medical revision with spaced repetition (React · Supabase · Python) | [Live app](https://medlingo-pied.vercel.app/) · [Source](https://github.com/KaustuvMohapatra/MedLingo) |
+| **AlexAI** | Conversational AI assistant | [Source](https://github.com/KaustuvMohapatra/AlexAI) |
 
-## Technologies & creative tools
+<img src="./assets/pixel-art/chapters/chapter-3.png" alt="Chapter III" />
 
-**Game development & interactive graphics**
+## The Spellbook of Skills
 
-<img src="https://skillicons.dev/icons?i=unity,godot,cs,threejs,blender&theme=dark&perline=10" alt="Unity, Godot, C sharp, Three.js and Blender" />
+### <img src="./assets/pixel-art/icons/skill-gamepad.png" width="32" alt="" /> Gameplay Engineering
+Unity · C# · Godot · Phaser · Babylon.js · Three.js · ShaderLab · WebGL · Matter.js · gameplay architecture
 
-<sub>Also: Phaser · ShaderLab · Gameplay architecture · WebGL</sub>
+### <img src="./assets/pixel-art/icons/skill-crystal.png" width="32" alt="" /> Artificial Intelligence
+Python · PyTorch · TensorFlow · OpenCV · scikit-learn · NumPy · Pandas · generative AI · agent planning (GOAP, utility AI)
 
-**Artificial intelligence & data**
+### <img src="./assets/pixel-art/icons/skill-mirror.png" width="32" alt="" /> Web & Interactive Systems
+React · TypeScript · JavaScript · Next.js · Vite · Tailwind CSS · Capacitor
 
-<img src="https://skillicons.dev/icons?i=py,pytorch,tensorflow,opencv,postgres&theme=dark&perline=10" alt="Python, PyTorch, TensorFlow, OpenCV and PostgreSQL" />
+### <img src="./assets/pixel-art/icons/skill-cauldron.png" width="32" alt="" /> Backend & Systems
+FastAPI · Flask · Node.js · Celery · PostgreSQL · Supabase · Docker · REST APIs · SQL
 
-<sub>Also: Generative AI · Agent planning · Pandas · NumPy · SQL</sub>
+### <img src="./assets/pixel-art/icons/skill-quill.png" width="32" alt="" /> Creative Tools
+Aseprite · Blender · Krita · Figma · Git · GitHub · CI/CD · automated testing
 
-<p><img src="./assets/icons/numpy.svg" width="39" height="39" alt="NumPy logo" />&nbsp; <img src="./assets/icons/pandas.svg" width="39" height="39" alt="Pandas logo" />&nbsp; <img src="./assets/icons/scikitlearn.svg" width="39" height="39" alt="scikit-learn logo" /></p>
+<img src="./assets/pixel-art/chapters/chapter-4.png" alt="Chapter IV" />
 
-**Web, backend & developer tools**
+## The Adventure Log
 
-<img src="https://skillicons.dev/icons?i=react,ts,js,nextjs,vite,tailwind,fastapi,flask,nodejs,supabase,docker,git,github,figma&theme=dark&perline=10" alt="React, TypeScript, JavaScript, Next.js, Vite, Tailwind, FastAPI, Flask, Node.js, Supabase, Docker, Git, GitHub and Figma" />
+- **VIT Vellore**: B.Tech in Computer Science and Engineering.
+- **TAG Club, VIT**: Senior Core Technical Department Head, leading technical development and collaboration.
+- **Arena Survivor**: shipped a browser-playable WebGL build on [itch.io](https://kaustuvm.itch.io/arena-survivor).
+- **EchoSim**: built a headless social-simulation engine with explainable planning and several interactive clients.
+- **Now brewing**: RELOAD and Medieval Hauler in development; Project Bloom, a cozy exploration game, in design.
 
-<sub>Also: REST APIs · CI/CD · Automated testing · Krita · Aseprite</sub>
+<img src="./assets/pixel-art/chapters/chapter-finale.png" alt="Finale" />
 
-## Beyond the code
+## Send an Owl
 
-- 🎓 **VIT Vellore** — B.Tech in Computer Science and Engineering.
-- 🛠️ **TAG Club at VIT** — Senior Core Technical Department Head, contributing to technical development and collaboration.
-- 🎮 **Creative engineering** — Interested in gameplay programming, AI-driven worlds and playful, useful digital experiences.
-
-## Let's make something interesting
+<p align="center"><picture>
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/pixel-art/animations/send-an-owl-still.png" />
+  <img src="./assets/pixel-art/animations/send-an-owl.gif" width="480" alt="Pixel-art owl carrying a sealed letter across a starry sky between castle towers." />
+</picture></p>
 
 <div align="center">
 
-Whether you're working on a game, an AI application, or an ambitious interactive experience, I'd love to connect.
+Working on a game, an AI application or an ambitious interactive experience? I'd love to hear about it.
 
-[**Portfolio**](https://kaustuvmohapatra.github.io/ResumeSite/) · [**Playable games**](https://kaustuvm.itch.io/) · [**GitHub**](https://github.com/KaustuvMohapatra) · [**LinkedIn**](https://www.linkedin.com/in/kaustuv-mohapatra-b0538428b/) · [**Email**](mailto:kaustuv4@outlook.com)
+[**Portfolio**](https://kaustuvmohapatra.github.io/ResumeSite/) · [**Playable games (itch.io)**](https://kaustuvm.itch.io/) · [**GitHub**](https://github.com/KaustuvMohapatra) · [**LinkedIn**](https://www.linkedin.com/in/kaustuv-mohapatra-b0538428b/) · [**Email**](mailto:kaustuv4@outlook.com)
 
-<sub>Built with original SVG artwork, simple HTML/Markdown, and a genuine interest in creative software.</sub>
+<sub>An unofficial fan tribute: all pixel art is original and made for this profile. Harry Potter and related names are trademarks of Warner Bros. Entertainment Inc.; this page has no affiliation with or endorsement from Warner Bros. or J.K. Rowling.</sub>
 
 </div>

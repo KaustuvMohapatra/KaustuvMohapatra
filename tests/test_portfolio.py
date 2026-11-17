@@ -1,36 +1,57 @@
+import sys
 import unittest
 from pathlib import Path
-import xml.etree.ElementTree as ET
-import sys
+
+from PIL import Image, ImageChops, ImageSequence
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
-from validate_portfolio import validate, ASSETS
+sys.path.insert(0, str(ROOT / "tools" / "pixelart"))
+import art  # noqa: E402
+from validate_portfolio import validate, ART  # noqa: E402
+
+
+def same(a, b):
+    return ImageChops.difference(a.convert("RGBA"), b.convert("RGBA")).getbbox() is None
+
 
 class PortfolioTests(unittest.TestCase):
-    def test_public_readme(self):
-        validate()
+    def test_readme_and_assets_validate(self):
+        self.assertGreaterEqual(validate(), 17)
 
-    def test_all_svg_xml(self):
-        for name in ASSETS:
-            svg = ET.parse(ROOT / name).getroot()
-            self.assertEqual(svg.tag, "{http://www.w3.org/2000/svg}svg")
-            self.assertIsNotNone(svg.find("{http://www.w3.org/2000/svg}title"))
+    def test_exports_match_the_art_source(self):
+        """Committed exports must be rebuilt whenever tools/pixelart/art.py changes."""
+        for sub, a in art.catalogue():
+            name = f"{a.name}-still.png" if a.frames > 1 else f"{a.name}.png"
+            exported = Image.open(ART / sub / name)
+            expected = a.composite(0).resize((a.w * a.scale, a.h * a.scale), Image.NEAREST)
+            self.assertTrue(same(exported, expected), f"{sub}/{name} is stale: run tools/pixelart/build.py")
 
-    def test_portrait_is_derived_not_photo(self):
-        svg = (ROOT / "assets/portrait/ascii-portrait.svg").read_text()
-        self.assertIn("ASCII portrait of Kaustuv", svg)
-        self.assertGreater(svg.count("xml:space=\"preserve\""), 60)
-        self.assertNotIn("<image", svg)
-        self.assertFalse((ROOT / "assets/portrait/portrait-source.jpg").exists())
+    def test_animations_loop_seamlessly(self):
+        for sub, a in art.catalogue():
+            if a.frames < 2:
+                continue
+            gif = Image.open(ART / sub / f"{a.name}.gif")
+            self.assertEqual(gif.n_frames, a.frames)
+            first = [f.convert("RGB") for f in ImageSequence.Iterator(gif)]
+            # consecutive frames differ (it animates) but never flash: < 6% of pixels change per frame
+            for i in range(len(first)):
+                diff = ImageChops.difference(first[i], first[(i + 1) % len(first)]).convert("L")
+                changed = sum(1 for v in diff.getdata() if v) / (diff.width * diff.height)
+                self.assertGreater(changed, 0, f"{a.name}: frame {i} identical to next")
+                self.assertLess(changed, 0.06, f"{a.name}: frame {i} changes {changed:.1%} of pixels")
 
-    def test_readme_has_relevant_links(self):
-        r = (ROOT / "README.md").read_text()
-        for link in ["https://github.com/KaustuvMohapatra/EchosSim",
-                     "https://kaustuvm.itch.io/arena-survivor",
-                     "https://github.com/KaustuvMohapatra/AI-Game-Asset-Maker",
-                     "https://skillicons.dev/icons"]:
-            self.assertIn(link, r)
+    def test_pixel_art_uses_a_limited_palette(self):
+        for sub, a in art.catalogue():
+            colours = set()
+            for f in range(a.frames):
+                colours |= {c for _, c in a.composite(f).getcolors(1 << 16) if c[3]}
+            self.assertLessEqual(len(colours), 64, f"{a.name} uses {len(colours)} colours")
+
+    def test_font_glyphs_are_5x7(self):
+        for ch, glyph in art.FONT.items():
+            self.assertEqual(len(glyph), 35, ch)
+
 
 if __name__ == "__main__":
     unittest.main()
